@@ -16,8 +16,8 @@ Terjadi kesalahan dalam menyimpan data.<br>
                 <div class="container">
                 	<div class="inner-column row">
                         <div id="left_sidebar" class="col-lg-3 col-xs-12 col-sm-4">
-                            <div id="categories" class="block">
-                            	<ul class="block-content">
+                            <div id="categories" class="block sidey">
+                            	<ul class="block-content nav">
                                 @foreach(category_menu() as $side_menu)
                                     @if($side_menu->parent == '0')
                                     <li>
@@ -72,7 +72,7 @@ Terjadi kesalahan dalam menyimpan data.<br>
                             <div class="contact-us">
                                 <h2 class="title">Testimonial</h2>
                                 <div class="contact-desc">
-                                    @foreach(recentTestimonial(2) as $key=>$value)
+                                    @foreach(recentTestimonial() as $key=>$value)
                                     <article class="col-lg-12" style="margin-bottom:10px">
                                         <h4><strong>{{$value->nama}}</strong></h4>
                                         <p>
@@ -84,7 +84,7 @@ Terjadi kesalahan dalam menyimpan data.<br>
                                     @endforeach
                                 </div>
                                 <div class="col-lg-12 col-xs-12">
-                                    {{recentTestimonial(1)->links()}}
+                                    {{recentTestimonial()->links()}}
                                 </div>
                                 <form class="col-lg-12 col-xs-12 contact-form">
                                     <h3>Kirim Testimonial</h3>

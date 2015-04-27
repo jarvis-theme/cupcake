@@ -226,7 +226,8 @@ nav#menu .navbar-form button:hover {background:#f3906c; color:#fff}
 #left_sidebar #advertising{max-width:270px; margin:0 auto 30px }
 
 #left_sidebar #newsletter_left {
-	background:url(../images/bg-newsletter-left.jpg) no-repeat center center;
+	/*background:url(../images/bg-newsletter-left.jpg) no-repeat center center;*/
+	background: #FFCDC5;
 	width:100%;
 	height:325px;
 	text-align:center;
@@ -261,7 +262,7 @@ nav#menu .navbar-form button:hover {background:#f3906c; color:#fff}
 #main-content {padding:40px 0}
 .inner-column {margin-bottom:30px}
 .top-list {
-	margin-bottom:50px;	
+	margin-bottom:20px;	
 }
 h2.title {color:#ee9d90; font-size:30px; font-weight:300; margin-bottom:30px;}
 .top-list h2.title { float:left; width:70%}

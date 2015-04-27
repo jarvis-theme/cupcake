@@ -71,7 +71,7 @@
                 </div>
                 <div class="copyright">
                 	<div class="container">
-                    	<p>&copy; {{ Theme::place('title') }} {{date('Y')}} All Right Reserved. Powered by <a style="text-decoration: none;" target="_blank" href="http://jarvis-store.com">Jarvis Store</a></p>
+                    	<p>&copy; {{ short_description(Theme::place('title'),80) }} {{date('Y')}} All Right Reserved. Powered by <a style="text-decoration: none;" target="_blank" href="http://jarvis-store.com">Jarvis Store</a></p>
                     </div>
                 </div>
             </footer>

@@ -66,7 +66,7 @@
                             {{ Theme::partial('subscribe') }}
                         </div><!--#left_sidebar-->
                         <div id="center_column" class="col-lg-9 col-xs-12 col-sm-8">
-                            <div class="product-list">
+                            <div class="product-list col-xs-12">
                                 <div class="top-list">
                                     <h2 class="title">Produk Kami</h2>
                                     <ul class="btn-thumb">
@@ -81,7 +81,7 @@
                                 <div class="row">
                                 @if($view == '' || $view == 'grid')
                                     <ul class="grid">
-                                    @foreach($produk as $myproduk)
+                                    @foreach(list_product(12, @$category) as $myproduk)
                                         <li class="col-xs-6 col-sm-4">
                                             <div class="image-container">
                                                 {{HTML::image(product_image_url($myproduk->gambar1),'produk',array('class'=>'img-responsive','style'=>'height:263px; margin: 0px auto;'))}}
@@ -94,10 +94,10 @@
                                     </ul>
                                 @elseif($view == 'list')
                                     <ul class="list">
-                                    @foreach($produk as $myproduk)
+                                    @foreach(list_product(12, @$category) as $myproduk)
                                         <li class="col-xs-12">
-                                            <div class="image-container col-xs-4">
-                                                {{HTML::image(product_image_url($myproduk->gambar1),'produk',array('class'=>'img-responsive','style'=>'height:150px;'))}}
+                                            <div class="image-container col-xs-12 col-md-3" style="padding: 0;">
+                                                {{HTML::image(product_image_url($myproduk->gambar1),'produk',array('class'=>'img-responsive','style'=>'height:150px;max-width: 150px;'))}}
                                             </div>
                                             <h5 class="product-name">{{short_description($myproduk->nama,73)}}</h5>
                                             <p>{{short_description($myproduk->deskripsi, 77)}}</p>
@@ -110,7 +110,7 @@
                                 @endif
                                 </div>
                                 <div class="pagination">
-                                    {{$produk->links()}}
+                                    {{list_product(6, @$category)->links()}}
                                 </div>
                             </div>
                         </div> <!--.center_column-->

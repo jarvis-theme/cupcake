@@ -43,4 +43,18 @@ $(document).ready(function() {
 		$(this).next().slideToggle(250);
 	});
 	
+	$('.fancybox').fancybox({
+		padding: 10,
+		openEffect : 'elastic',
+		openSpeed  : 150,
+		closeEffect : 'elastic',
+		closeSpeed  : 150
+	});
+
+	$('#da-slider').cslider({
+		autoplay	: true,
+		bgincrement	: 450
+	});
+
+	$('.sidey .nav').navgoco();
 });

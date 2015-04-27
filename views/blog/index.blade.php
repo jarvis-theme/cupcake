@@ -6,7 +6,7 @@
 	                        	<ul class="block-content">
 	                        		@foreach(list_blog(5) as $artikel)
 	                                <li>
-	                                    <h5 class="title-news" style="margin-bottom: 5px;">{{short_description($artikel->judul, 28)}}</h5>
+	                                    <h5 class="title-news" style="margin-bottom: 5px;"><a href="{{blog_url($artikel)}}">{{short_description($artikel->judul, 28)}}</a></h5>
 	                                    <span class="date-post"><i class="fa fa-calendar"></i> {{date("d F Y", strtotime($artikel->created_at))}}</span>
 	                                </li>
 	                                @endforeach
