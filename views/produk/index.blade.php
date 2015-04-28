@@ -108,21 +108,9 @@
                                     @foreach(list_product(12, @$category) as $myproduk)
                                         <li class="col-xs-12">
                                             <div class="image-container col-xs-12 col-md-3" style="padding: 0;">
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
                                                 <a href="{{product_url($myproduk)}}">
                                                 {{HTML::image(product_image_url($myproduk->gambar1),'produk',array('class'=>'img-responsive','style'=>'height:150px;max-width: 150px;'))}}
                                                 </a>
-=======
-                                                {{HTML::image(product_image_url($myproduk->gambar1),'produk',array('class'=>'img-responsive','style'=>'height:150px;max-width: 150px;'))}}
->>>>>>> b5c1603f1bb9c1ed8c8187614a31470063de9fd1
-=======
-                                                {{HTML::image(product_image_url($myproduk->gambar1),'produk',array('class'=>'img-responsive','style'=>'height:150px;max-width: 150px;'))}}
->>>>>>> b5c1603f1bb9c1ed8c8187614a31470063de9fd1
-=======
-                                                {{HTML::image(product_image_url($myproduk->gambar1),'produk',array('class'=>'img-responsive','style'=>'height:150px;max-width: 150px;'))}}
->>>>>>> b5c1603f1bb9c1ed8c8187614a31470063de9fd1
                                             </div>
                                             <h5 class="product-name">{{short_description($myproduk->nama,73)}}</h5>
                                             <p>{{short_description($myproduk->deskripsi, 77)}}</p>
