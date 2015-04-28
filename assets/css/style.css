@@ -226,7 +226,8 @@ nav#menu .navbar-form button:hover {background:#f3906c; color:#fff}
 #left_sidebar #advertising{max-width:270px; margin:0 auto 30px }
 
 #left_sidebar #newsletter_left {
-	background:url(../images/bg-newsletter-left.jpg) no-repeat center center;
+	/*background:url(../images/bg-newsletter-left.jpg) no-repeat center center;*/
+	background: #FFCDC5;
 	width:100%;
 	height:325px;
 	text-align:center;
@@ -261,7 +262,7 @@ nav#menu .navbar-form button:hover {background:#f3906c; color:#fff}
 #main-content {padding:40px 0}
 .inner-column {margin-bottom:30px}
 .top-list {
-	margin-bottom:50px;	
+	margin-bottom:20px;	
 }
 h2.title {color:#ee9d90; font-size:30px; font-weight:300; margin-bottom:30px;}
 .top-list h2.title { float:left; width:70%}
@@ -602,6 +603,7 @@ footer .copyright p {margin:0}
 	.btm-details img {margin-bottom:20px}
 }
 
+/*badge custom*/
 .badge-black{
 	display: inline-block;
 	min-width: 10px;
@@ -615,6 +617,7 @@ footer .copyright p {margin:0}
 	vertical-align: baseline;
 	background-color: #777;
 	border-radius: 10px;
+	position: absolute;
 }
 .badge-red{
 	display: inline-block;
@@ -629,6 +632,7 @@ footer .copyright p {margin:0}
 	vertical-align: baseline;
 	background-color: #d9534f;
 	border-radius: 10px;
+	position: absolute;
 }
 .badge-blue{
 	display: inline-block;
@@ -643,6 +647,7 @@ footer .copyright p {margin:0}
 	vertical-align: baseline;
 	background-color: #5bc0de;
 	border-radius: 10px;
+	position: absolute;
 }
 .badge-green{
 	display: inline-block;
@@ -657,35 +662,8 @@ footer .copyright p {margin:0}
 	vertical-align: baseline;
 	background-color: #b7d682;
 	border-radius: 10px;
+	position: absolute;
 }
-
-
-
-
-.products_list li:first-child{border:none; padding-top:0px;}
-.products_list a.product_image{float:left;}
-.products_list a.product_image img{ border:solid 2px #fff; height:190px;}
-.products_list li:hover img{-moz-transition:all 0.3s ease-out 0s; -webkit-transition: all 0.3s ease-out;}
-.products_list li:hover .pr_add{ margin-top:-32px;-moz-transition:all 0.3s ease-out 0s; -webkit-transition: all 0.3s ease-out;}
-.products_list li{width:100%;padding-bottom:15px;padding-top:15px; clear:both; display:inline-block; border-top:solid 1px #dedede;}
-a.product_image{display:block;}
-a.product_image img{ border:solid 2px #fff;}
-a.product_image{float:left;}
-a.product_image img{ border:solid 2px #fff; height:190px;}
-.product_image{height: 223px;}
-.product_info{ margin-bottom:10px; padding-bottom:12px; border-bottom:solid 1px;}
-.product_info h3{ font-size:14px; font-weight:normal; padding:12px 0px;}
-.product_info h3 a{color:#000000; text-decoration:none;}
-.product_info small{ color:#a2a2a2; font-size:13px; line-height:16px;}
-.product_info{ margin-bottom:10px; padding-bottom:12px; border-bottom:solid 1px #EAEAEA; float:right; width:560px;}
-.product_info h3{ font-size:14px; font-weight:normal; padding:12px 0px;}
-.product_info h3 a{color:#000000; text-decoration:none;}
-.product_info small{ color:#a2a2a2; font-size:13px; line-height:16px;}
-.price_info{float:right; width:560px;}
-.price_info button{ float:right; background:none;border:0px; padding:0px; height:32px; line-height:100%; overflow:hidden; cursor:pointer;}
-.price_info button .pr_price{ background:#544f4b;  padding:10px; color:#fff; font-size:14px; font-weight:bold; float:left; clear:both; width:83%; text-transform:uppercase;}
-.price_info button .pr_add{ padding:10px; color:#fff; font-size:11px; font-weight:bold; text-transform:uppercase;  float:left; clear:both; width:83%; margin-top:0px;}
-
 
 /*menu sidebar kategori*/
 .sidey .nav a .caret {
@@ -725,3 +703,5 @@ a.product_image img{ border:solid 2px #fff; height:190px;}
 }
 .product-list .list > li {background: transparent;}
 .product-list ul li a.view {text-align: center;}
+
+#comment-product{clear: both; margin-top: -30px; padding-top: 15px;}

@@ -66,7 +66,7 @@
                             {{ Theme::partial('subscribe') }}
                         </div><!--#left_sidebar-->
                         <div id="center_column" class="col-lg-9 col-xs-12 col-sm-8">
-                            <div class="product-list">
+                            <div class="product-list col-xs-12">
                                 <div class="top-list">
                                     <h2 class="title">Produk Kami</h2>
                                     <ul class="btn-thumb">
@@ -81,10 +81,21 @@
                                 <div class="row">
                                 @if($view == '' || $view == 'grid')
                                     <ul class="grid">
-                                    @foreach($produk as $myproduk)
+                                    @foreach(list_product(12, @$category) as $myproduk)
                                         <li class="col-xs-6 col-sm-4">
+                                            @if(is_outstok($myproduk))
+                                            <div class="badge-black" style="right: 30px;top: 5px; z-index: 1;"><span>KOSONG</span></div>
+                                            @endif
+                                            @if(is_terlaris($myproduk))
+                                            <div class="badge-red" style="right: 30px;top: 5px;"><span>HOT</span></div>
+                                            @endif
+                                            @if(is_produkbaru($myproduk))
+                                            <div class="badge-green" style="right: 30px;top: 5px;"><span>BARU</span></div>
+                                            @endif
                                             <div class="image-container">
+                                                <a href="{{product_url($myproduk)}}">
                                                 {{HTML::image(product_image_url($myproduk->gambar1),'produk',array('class'=>'img-responsive','style'=>'height:263px; margin: 0px auto;'))}}
+                                                </a>
                                             </div>
                                             <h5 class="product-name">{{short_description($myproduk->nama,11)}}</h5>
                                             <span class="price">{{price($myproduk->hargaJual)}}</span>
@@ -94,10 +105,20 @@
                                     </ul>
                                 @elseif($view == 'list')
                                     <ul class="list">
-                                    @foreach($produk as $myproduk)
+                                    @foreach(list_product(12, @$category) as $myproduk)
                                         <li class="col-xs-12">
-                                            <div class="image-container col-xs-4">
-                                                {{HTML::image(product_image_url($myproduk->gambar1),'produk',array('class'=>'img-responsive','style'=>'height:150px;'))}}
+                                            <div class="image-container col-xs-12 col-md-3" style="padding: 0;">
+<<<<<<< HEAD
+<<<<<<< HEAD
+                                                <a href="{{product_url($myproduk)}}">
+                                                {{HTML::image(product_image_url($myproduk->gambar1),'produk',array('class'=>'img-responsive','style'=>'height:150px;max-width: 150px;'))}}
+                                                </a>
+=======
+                                                {{HTML::image(product_image_url($myproduk->gambar1),'produk',array('class'=>'img-responsive','style'=>'height:150px;max-width: 150px;'))}}
+>>>>>>> b5c1603f1bb9c1ed8c8187614a31470063de9fd1
+=======
+                                                {{HTML::image(product_image_url($myproduk->gambar1),'produk',array('class'=>'img-responsive','style'=>'height:150px;max-width: 150px;'))}}
+>>>>>>> b5c1603f1bb9c1ed8c8187614a31470063de9fd1
                                             </div>
                                             <h5 class="product-name">{{short_description($myproduk->nama,73)}}</h5>
                                             <p>{{short_description($myproduk->deskripsi, 77)}}</p>
@@ -110,7 +131,7 @@
                                 @endif
                                 </div>
                                 <div class="pagination">
-                                    {{$produk->links()}}
+                                    {{list_product(6, @$category)->links()}}
                                 </div>
                             </div>
                         </div> <!--.center_column-->

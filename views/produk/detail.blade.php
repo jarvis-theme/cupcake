@@ -176,14 +176,26 @@
                                     </div>
                                 </div><!--.product-details-->
                             </form>
+                            @if(count($produklain) > 0)
                             <div id="related-product" class="product-list">
                                 <h2 class="title">Produk Lainnya</h2>
                                 <div class="row">
                                     <ul class="grid">
                                         @foreach($produklain  as $related)
                                         <li class="col-xs-6 col-sm-3">
+                                            @if(is_outstok($related))
+                                            <div class="badge-black" style="right: 30px;top: 5px;"><span>KOSONG</span></div>
+                                            @endif
+                                            @if(is_terlaris($related))
+                                            <div class="badge-red" style="right: 30px;top: 5px;"><span>HOT</span></div>
+                                            @endif
+                                            @if(is_produkbaru($related))
+                                            <div class="badge-green" style="right: 30px;top: 5px;"><span>BARU</span></div>
+                                            @endif
                                             <div class="image-container">
+                                                <a href="{{product_url($related)}}">
                                                 {{HTML::image(product_image_url($related->gambar1),'produk',array('class'=>'img-responsive','style'=>'height:189px'))}}
+                                                </a>
                                             </div>
                                             <h5 class="product-name">{{short_description($related->nama, 18)}}</h5>
                                             <span class="price">{{price($related->hargaJual)}}</span>
@@ -193,6 +205,11 @@
                                     </ul>
                                 </div>
                             </div><!--.product-list-->
+                            @endif
+                            <div class="row col-xs-12" id="comment-product">
+                                <hr>
+                                {{pluginTrustklik()}}
+                            </div>
                         </div> <!--.center_column-->
                     </div><!--.inner-column-->
                 </div>

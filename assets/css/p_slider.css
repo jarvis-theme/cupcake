@@ -2,7 +2,8 @@
 .da-slider{
 	width: 100%;
 	min-width: 380px;
-	height: 630px;
+	height: 550px;
+	/*height: 630px;*/
 	position: relative;
 	margin: 0 auto;
 	overflow: hidden;
@@ -16,7 +17,8 @@
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	top: 0px;
+	top: 35px;
+	/*top: 0px;*/
 	left: 0px;
 	text-align: left;
 }
@@ -30,7 +32,7 @@
 .da-slide h1,
 .da-slide .da-link,
 .da-slide .da-img{
-	position: absolute;
+	/*position: absolute;*/
 	opacity: 0;
 	left: 110%;
 }
@@ -65,12 +67,12 @@
 }
 .da-slide .da-img{
 	text-align: center;
-	width: 50%;
+	/*width: 50%;*/
 	top: 100px;
 	line-height: 320px;
 	left: 110%; /*60%*/
 }
-.da-slide .da-img img{width:100%; height:auto}
+.da-slide .da-img img{/*width:100%; */height:auto}
 .da-slide .da-link{
 	border: 2px solid #fff;
     border-radius: 30px;

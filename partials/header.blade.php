@@ -30,9 +30,17 @@
                                 @endforeach
                             </div>
                             <div id="logo" class="col-xs-12 col-sm-4">
-                                <a href="{{URL::to('/')}}">
+                                @if(@getimagesize(URL::to(getPrefixDomain().'/galeri/'.$toko->logo)))
+                                <a href="{{ URL::to('home') }}">
                                     {{HTML::image(logo_image_url(), 'Logo', array('width'=>'310', 'height'=>'108'))}}
                                 </a>
+                                @else
+                                <h3 style="margin:42px 0;">
+                                    <strong>
+                                        <a href="{{URL::to('home')}}" style="color: #ff7d68;">{{ short_description(Theme::place('title'),16) }}</a>
+                                    </strong>
+                                </h3>
+                                @endif
                             </div>
                             <div id="shopping-cart" class="col-xs-12 col-sm-4">
                                 <div class="cart-block">
@@ -43,17 +51,20 @@
                         <div class="row mobile-only">
                         	<div id="logo" class="col-xs-12">
                                 @if(@getimagesize(URL::to( logo_image_url() )))
-                                <a href="{{URL::to('/')}}">
+                                <a href="{{URL::to('home')}}">
                                     {{HTML::image(logo_image_url(), 'Logo', array('width'=>'310', 'height'=>'108'))}}
                                 </a>
                                 @else
-                                <a style="text-decoration:none" href="{{URL::to('home')}}"><h1>{{ Theme::place('title') }}</h1></a>
+                                <a style="text-decoration:none" href="{{URL::to('home')}}">
+                                    <h1 style="color: #ff7d68;">{{ short_description(Theme::place('title'),30) }}</h1>
+                                </a>
                                 @endif
                             </div>
+                            <?php 
+                                $last_testi = Testimonial::where('visibility', '=', '1')->orderby(DB::raw('RAND()'))->where('akunId','=',Session::get('akunid'))->paginate(1);
+                            ?>
+                            @if(count($last_testi) > 0)
                             <div id="top_testimonial" class="col-xs-6">
-                                <?php 
-                                    $last_testi = Testimonial::where('visibility', '=', '1')->orderby(DB::raw('RAND()'))->where('akunId','=',Session::get('akunid'))->paginate(1);
-                                ?>
                                 @foreach($last_testi as $value)
                                 <p>{{short_description($value->isi, 94)}} <br><span>~{{$value->nama}}</span></p>
                                 @endforeach
@@ -63,6 +74,13 @@
                                     {{shopping_cart()}}
                                 </div>
                             </div>
+                            @else
+                            <div id="shopping-cart" class="col-xs-12">
+                                <div class="cart-block pull-left">
+                                    {{shopping_cart()}}
+                                </div>
+                            </div>
+                            @endif
                         </div>
                     </div>
                 </div> <!--.top-head-->
