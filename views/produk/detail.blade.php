@@ -160,13 +160,14 @@
                                             {{HTML::image(bank_logo($banks),'bank')}}
                                             @endforeach 
 
-                                            @if(list_payments()[2]->aktif == 1) 
-                                            <img src="{{URL::to('img/bank/ipaymu.jpg')}}" alt="ipaymu"/>
-                                            @endif  
-
-                                            @if(count(list_dokus()) > 0 && list_dokus()->status == 1)   
-                                            <img src="{{URL::to('img/bank/doku.jpg')}}" alt="doku myshortcart"/>
-                                            @endif  
+                                            @foreach(list_payments() as $pay)
+                                                @if($pay->nama == 'ipaymu' && $pay->aktif == 1)
+                                                <img src="{{url('img/bank/ipaymu.jpg')}}" alt="ipaymu" />
+                                                @endif
+                                            @endforeach
+                                            @if(count(list_dokus()) > 0 && list_dokus()->status == 1)
+                                            <img src="{{url('img/bank/doku.jpg')}}" alt="doku myshortcart" />
+                                            @endif
                                         </div>
                                         <div class="col-lg-5 col-md-5">
                                         	<button class="btn addtocart" type="submit"><i class="cart"></i>Add to cart</button>
