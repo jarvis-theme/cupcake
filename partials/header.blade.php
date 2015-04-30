@@ -31,7 +31,7 @@
                             </div>
                             <div id="logo" class="col-xs-12 col-sm-4">
                                 @if(@getimagesize(URL::to(getPrefixDomain().'/galeri/'.$toko->logo)))
-                                <a href="{{ URL::to('home') }}">
+                                <a href="{{ url('home') }}">
                                     {{HTML::image(logo_image_url(), 'Logo', array('width'=>'310', 'height'=>'108'))}}
                                 </a>
                                 @else
@@ -43,7 +43,7 @@
                                 @endif
                             </div>
                             <div id="shopping-cart" class="col-xs-12 col-sm-4">
-                                <div class="cart-block">
+                                <div class="cart-block" id="shoppingcartplace">
                                     {{shopping_cart()}}
                                 </div>
                             </div>

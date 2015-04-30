@@ -8,7 +8,7 @@
                             <div id="about-foot" class="col-xs-12 col-sm-4">
                             	<h4 class="title">Tentang Kami</h4>
                             	<div class="block-content">
-                                    <p>{{shortDescription($aboutUs[1]->isi,400)}}</p>
+                                    <p>{{short_description($aboutUs[1]->isi,400)}}</p>
                                 </div>
                             </div>
                             @foreach($tautan as $key=>$menu)
@@ -46,7 +46,7 @@
                             	<h4 class="title">Workshop Address</h4>
                             	<div class="block-content">
                                     <p>{{@$kontak->alamat}}</p>
-                                    <p><strong>Phone :</strong> {{@$kontak->telepon ? $kontak->telepon : '-&nbsp;&nbsp;'}}  <strong>HP :</strong> {{@$kontak->hp ? $kontak->hp : '-&nbsp;&nbsp;'}}</p>
+                                    <p><strong>Phone :</strong> {{@$kontak->telepon ? $kontak->telepon.'&nbsp;&nbsp;' : '-&nbsp;&nbsp;'}}  <strong>HP :</strong> {{@$kontak->hp ? $kontak->hp : '-&nbsp;&nbsp;'}}</p>
                                     <ul class="social">
                                         @if($kontak->fb)
                                     	<li><a href="{{URL::to($kontak->fb)}}"><i class="fa fa-facebook"></i></a></li>

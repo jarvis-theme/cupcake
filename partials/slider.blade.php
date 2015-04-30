@@ -1,7 +1,7 @@
             <section id="p-slide">
             	<div class="container">
                     <div id="da-slider" class="da-slider">
-                    @foreach ($slideshow as $val)        
+                    @foreach (slide_show() as $val)        
                         <div class="da-slide">
                             <!-- <h2>For everybody <br>who Love</h2>
                             <h1>Cupcake</h1>

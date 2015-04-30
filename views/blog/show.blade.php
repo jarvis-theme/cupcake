@@ -34,12 +34,12 @@
                             <div class="product-list">
                                 <section class="content">
                                     <div class="entry">
-                                        <h2 class="title">{{$detailblog->judul}}</h2>
+                                        <h2 class="title">{{$artikel->judul}}</h2>
                                         <ul style="margin-bottom: 5px;">
-                                            <span class="date-post"><i class="fa fa-calendar"></i> {{waktuTgl($detailblog->created_at)}}</span>&nbsp;&nbsp;
-                                            <span class="date-post"><i class="fa fa-tags"></i> <a href="{{URL::to('blog/category/'.Str::slug(@$detailblog->kategori->nama))}}">{{@$detailblog->kategori->nama}}</a></span>
+                                            <span class="date-post"><i class="fa fa-calendar"></i> {{waktuTgl($artikel->created_at)}}</span>&nbsp;&nbsp;
+                                            <span class="date-post"><i class="fa fa-tags"></i> <a href="{{blog_category_url(@$detailblog->kategori)}}">{{@$detailblog->kategori->nama}}</a></span>
                                         </ul>
-                                        <p>{{$detailblog->isi}}</p>
+                                        <p>{{$artikel->isi}}</p>
                                     </div><!--entry-->
                                     <hr>
                                     <div class="navigate comments clearfix">
@@ -60,7 +60,7 @@
                                     <hr>
                                     <div>
                                         {{$fbscript}}
-                                        {{fbcommentbox(slugBlog($detailblog), '640px', '5', 'light')}}
+                                        {{fbcommentbox(blog_url($artikel), '640px', '5', 'light')}}
                                     </div>
                                 </section>
                             </div>
