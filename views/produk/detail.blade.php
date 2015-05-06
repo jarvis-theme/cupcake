@@ -39,13 +39,13 @@
                                     @endforeach
                                 </ul>
                                 <div class="btn-more">
-                                	<a href="{{URL::to('produk')}}">view more</a>
+                                	<a href="{{url('produk')}}">view more</a>
                                 </div>
                             </div>
                             <div id="advertising" class="block">
                                 @foreach(vertical_banner() as $banners)
                             	<div class="img-block">
-                            		<a href="{{URL::to($banners->url)}}">
+                            		<a href="{{url($banners->url)}}">
                                         {{HTML::image(banner_image_url($banners->gambar),'banner',array('width'=>'272','height'=>'391','class'=>'img-responsive'))}}
                                     </a>
                                 </div>
@@ -104,7 +104,7 @@
                                             {{price($produk->hargaJual)}}
                                             </span>
                                             <div class="img-rating">
-                                                <iframe src="//www.facebook.com/plugins/share_button.php?href={{URL::to(slugProduk($produk))}}&amp;layout=button" scrolling="no" frameborder="0" style="border:none; overflow:hidden;height:20px;width:70px;" allowTransparency="true"></iframe>
+                                                <iframe src="//www.facebook.com/plugins/share_button.php?href={{url(slugProduk($produk))}}&amp;layout=button" scrolling="no" frameborder="0" style="border:none; overflow:hidden;height:20px;width:70px;" allowTransparency="true"></iframe>
                                                 <a class="twitter-share-button" href="https://twitter.com/share" data-count="none">Tweet </a>
                                                 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
                                             </div>
@@ -159,7 +159,6 @@
                                             @foreach(list_banks() as $banks)    
                                             {{HTML::image(bank_logo($banks),'bank')}}
                                             @endforeach 
-
                                             @foreach(list_payments() as $pay)
                                                 @if($pay->nama == 'ipaymu' && $pay->aktif == 1)
                                                 <img src="{{url('img/bank/ipaymu.jpg')}}" alt="ipaymu" />
@@ -171,7 +170,7 @@
                                         </div>
                                         <div class="col-lg-5 col-md-5">
                                         	<button class="btn addtocart" type="submit"><i class="cart"></i>Add to cart</button>
-                                            <a class="btn checkout" href="{{URL::to('checkout')}}">Checkout</a>
+                                            <a class="btn checkout" href="{{url('checkout')}}">Checkout</a>
                                         </div>
                                         <div class="clr"></div>
                                     </div>

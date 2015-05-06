@@ -10,7 +10,7 @@
                         @else
                         <span style="color:#fff">
                             <small>
-                            Selamat datang, <a href="{{URL::to('member')}}" style="color:#fff;">{{user()->nama}}</a> | {{HTML::link('logout', 'Log out', array('style'=>'color: #fff'))}}
+                            Selamat datang, <a href="{{url('member')}}" style="color:#fff;">{{user()->nama}}</a> | {{HTML::link('logout', 'Log out', array('style'=>'color: #fff'))}}
                             </small>
                         </span>
                         @endif
@@ -22,22 +22,19 @@
                 	<div class="container">
                     	<div class="row desktop-only">
                             <div id="top_testimonial" class="col-xs-12 col-sm-4">
-                                <?php 
-                                    $last_testi = Testimonial::where('visibility', '=', '1')->orderby(DB::raw('RAND()'))->where('akunId','=',Session::get('akunid'))->paginate(1);
-                                ?>
-                                @foreach($last_testi as $value)
+                                @foreach(random_testimonial(1) as $value)
                                 <p>{{short_description($value->isi, 94)}} <br><span>~{{$value->nama}}</span></p>
                                 @endforeach
                             </div>
                             <div id="logo" class="col-xs-12 col-sm-4">
-                                @if(@getimagesize(URL::to(getPrefixDomain().'/galeri/'.$toko->logo)))
+                                @if(@getimagesize( url(logo_image_url()) ))
                                 <a href="{{ url('home') }}">
                                     {{HTML::image(logo_image_url(), 'Logo', array('width'=>'310', 'height'=>'108'))}}
                                 </a>
                                 @else
                                 <h3 style="margin:42px 0;">
                                     <strong>
-                                        <a href="{{URL::to('home')}}" style="color: #ff7d68;">{{ short_description(Theme::place('title'),16) }}</a>
+                                        <a href="{{url('home')}}" style="color: #ff7d68;">{{ short_description(Theme::place('title'),16) }}</a>
                                     </strong>
                                 </h3>
                                 @endif
@@ -50,22 +47,19 @@
                         </div>
                         <div class="row mobile-only">
                         	<div id="logo" class="col-xs-12">
-                                @if(@getimagesize(URL::to( logo_image_url() )))
-                                <a href="{{URL::to('home')}}">
+                                @if(@getimagesize(url( logo_image_url() )))
+                                <a href="{{url('home')}}">
                                     {{HTML::image(logo_image_url(), 'Logo', array('width'=>'310', 'height'=>'108'))}}
                                 </a>
                                 @else
-                                <a style="text-decoration:none" href="{{URL::to('home')}}">
+                                <a style="text-decoration:none" href="{{url('home')}}">
                                     <h1 style="color: #ff7d68;">{{ short_description(Theme::place('title'),30) }}</h1>
                                 </a>
                                 @endif
                             </div>
-                            <?php 
-                                $last_testi = Testimonial::where('visibility', '=', '1')->orderby(DB::raw('RAND()'))->where('akunId','=',Session::get('akunid'))->paginate(1);
-                            ?>
-                            @if(count($last_testi) > 0)
+                            @if(count(random_testimonial(1)) > 0)
                             <div id="top_testimonial" class="col-xs-6">
-                                @foreach($last_testi as $value)
+                                @foreach(random_testimonial(1) as $value)
                                 <p>{{short_description($value->isi, 94)}} <br><span>~{{$value->nama}}</span></p>
                                 @endforeach
                             </div>
@@ -99,18 +93,18 @@
                         <ul class="nav navbar-nav">
                         @foreach($mainMenu as $key=>$link)
                             @if($link->halaman=='1')
-                                <li><a href={{"'".URL::to("halaman/".strtolower($link->linkTo))."'"}}>{{$link->nama}}</a></li>
+                                <li><a href='{{url("halaman/".strtolower($link->linkTo))}}'>{{$link->nama}}</a></li>
                             @elseif($link->halaman=='2')
-                                <li><a href={{"'".URL::to("blog/".strtolower($link->linkTo))."'"}}>{{$link->nama}}</a></li>
+                                <li><a href='{{url("blog/".strtolower($link->linkTo))}}'>{{$link->nama}}</a></li>
                             @elseif($link->url=='1')
-                                <li><a href={{"'".URL::to('http://'.strtolower($link->linkTo))."'"}}>{{$link->nama}}</a></li>
+                                <li><a href='{{url("http://".strtolower($link->linkTo))}}'>{{$link->nama}}</a></li>
                             @else
-                                <li><a href={{"'".URL::to(strtolower($link->linkTo))."'"}}>{{$link->nama}}</a></li>
+                                <li><a href='{{url(strtolower($link->linkTo))}}'>{{$link->nama}}</a></li>
                             @endif
                         @endforeach
                         </ul>
                         <div class="col-sm-3 col-md-3 pull-right search-form">
-                            <form class="navbar-form" role="search" action="{{URL::to('search')}}" method="post">
+                            <form class="navbar-form" role="search" action="{{url('search')}}" method="post">
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Search" name="search" id="search">
                                     <div class="input-group-btn">

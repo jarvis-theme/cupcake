@@ -1,5 +1,5 @@
 <div class="counter">
-    <a href="javascript:void(0);" class="minicart_link" >
+    <a href="{{url('checkout')}}" class="minicart_link" >
     	<span class="item"><strong>{{Shpcart::cart()->total_items()}}</strong> items on cart</span>
     	<span class="price"><strong>{{ price(Shpcart::cart()->total() )}}</strong></span>
 	</a>

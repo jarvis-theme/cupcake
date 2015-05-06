@@ -1,8 +1,8 @@
                 <div class="container">
                     <div class="inner-column row">
                         <div id="left_sidebar" class="col-lg-3 col-xs-12 col-sm-4">
-                            <div id="categories" class="block">
-                                <ul class="block-content">
+                            <div id="categories" class="block sidey">
+                                <ul class="block-content nav">
                                 @foreach(category_menu() as $side_menu)
                                     @if($side_menu->parent == '0')
                                     <li>
@@ -56,18 +56,15 @@
                                     <span><i class="mail"></i> {{$kontak->email}}</span>
                                     <div class="clr"></div>
                                 </div>
-                                <form class="contact-form">
+                                <form class="contact-form" action="{{URL::to('kontak')}}" method="post">
                                     <p class="form-group">
-                                        <input class="form-control" placeholder="Name" type="text">
+                                        <input class="form-control" placeholder="Name" name="namaKontak" type="text" required>
                                     </p>
                                     <p class="form-group">
-                                        <input class="form-control" placeholder="Email Address" type="text">
+                                        <input class="form-control" placeholder="Email Address" name="emailKontak" type="text" required>
                                     </p>
                                     <p class="form-group">
-                                        <input class="form-control" placeholder="Subject" type="text">
-                                    </p>
-                                    <p class="form-group">
-                                        <textarea class="form-control" placeholder="Message"></textarea>
+                                        <textarea class="form-control" placeholder="Message" name="messageKontak" required></textarea>
                                     </p>
                                     <button class="btn-send">Send</button>
                                 </form>
