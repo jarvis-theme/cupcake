@@ -1,4 +1,4 @@
-            <div style=" display: block;background: #ff7d68;">
+            <div class="top-header">
                 <div class="container" style="padding-bottom:5px">
                     <div class="pull-right">
                         @if( !is_login() )

@@ -706,3 +706,6 @@ footer .copyright p {margin:0}
 
 #comment-product{clear: both; margin-top: -30px; padding-top: 15px;}
 .theme{color:#ff7d68;}
+
+.product-details .fb-share-button {display: inline-block;}
+.top-header { display: block;background: #ff7d68; }

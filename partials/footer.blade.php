@@ -22,17 +22,17 @@
                                         <li>
                                         @if($link_menu->halaman == '1')
                                             @if($link_menu->linkTo == 'halaman/about-us')
-                                            <a href="{{URL::to(strtolower($link_menu->linkTo))}}">{{$link_menu->nama}}</a>
+                                            <a href="{{url(strtolower($link_menu->linkTo))}}">{{$link_menu->nama}}</a>
                                             @else
-                                            <a href={{"'".URL::to("halaman/".strtolower($link_menu->linkTo))."'"}}>{{$link_menu->nama}}</a>
+                                            <a href='{{url("halaman/".strtolower($link_menu->linkTo))}}'>{{$link_menu->nama}}</a>
                                             @endif
                                         @elseif($link_menu->halaman == '2')
-                                            <a href={{"'".URL::to("blog/".strtolower($link_menu->linkTo))}}."'">{{$link_menu->nama}}</a>
+                                            <a href='{{url("blog/".strtolower($link_menu->linkTo))}}'>{{$link_menu->nama}}</a>
 
                                         @elseif($link_menu->url == '1')
-                                            <a href="{{URL::to(strtolower($link_menu->linkTo))}}">{{$link_menu->nama}}</a>
+                                            <a href="{{url(strtolower($link_menu->linkTo))}}">{{$link_menu->nama}}</a>
                                         @else
-                                            <a href="{{URL::to(strtolower($link_menu->linkTo))}}">{{$link_menu->nama}}</a>
+                                            <a href="{{url(strtolower($link_menu->linkTo))}}">{{$link_menu->nama}}</a>
                                         @endif
                                         </li>
                                         @endif
@@ -49,19 +49,19 @@
                                     <p><strong>Phone :</strong> {{@$kontak->telepon ? $kontak->telepon.'&nbsp;&nbsp;' : '-&nbsp;&nbsp;'}}  <strong>HP :</strong> {{@$kontak->hp ? $kontak->hp : '-&nbsp;&nbsp;'}}</p>
                                     <ul class="social">
                                         @if($kontak->fb)
-                                    	<li><a href="{{URL::to($kontak->fb)}}"><i class="fa fa-facebook"></i></a></li>
+                                    	<li><a href="{{url($kontak->fb)}}"><i class="fa fa-facebook"></i></a></li>
                                         @endif
                                         @if($kontak->tw)
-                                        <li><a href="{{URL::to($kontak->tw)}}"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="{{url($kontak->tw)}}"><i class="fa fa-twitter"></i></a></li>
                                         @endif
                                         @if($kontak->gp)
-                                        <li><a href="{{URL::to($kontak->gp)}}"><i class="fa fa-google-plus"></i></a></li>
+                                        <li><a href="{{url($kontak->gp)}}"><i class="fa fa-google-plus"></i></a></li>
                                         @endif
                                         @if($kontak->pt)
-                                        <li><a href="{{URL::to($kontak->pt)}}"><i class="fa fa-pinterest"></i></a></li>
+                                        <li><a href="{{url($kontak->pt)}}"><i class="fa fa-pinterest"></i></a></li>
                                         @endif
                                         @if($kontak->ig)
-                                        <li><a href="{{URL::to($kontak->ig)}}"><i class="fa fa-instagram"></i></a></li>
+                                        <li><a href="{{url($kontak->ig)}}"><i class="fa fa-instagram"></i></a></li>
                                         @endif
                                     </ul>
                                 </div>
