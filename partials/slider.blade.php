@@ -18,7 +18,7 @@
             <section id="p-carousel" class="hidden-xs">
                 <div class="container">
                     <div id="single-product" class="owl-carousel owl-theme">
-                    @foreach(list_product() as $produk) 
+                    @foreach(best_seller() as $produk) 
                         <div class="item">
                             <div class="image-container">
                                 <a href="{{product_url($produk)}}">
