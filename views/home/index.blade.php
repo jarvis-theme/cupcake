@@ -8,16 +8,16 @@
                                 </div>
                                 <div class="row">
                                     <ul class="grid">
-                                    @foreach(list_product(8) as $produk)
+                                    @foreach(list_product(null) as $produk)
                                         <li class="col-xs-6 col-sm-3">
                                             @if(is_outstok($produk))
                                             <div class="badge-black" style="right: 30px;top: 5px; z-index: 1;"><span>KOSONG</span></div>
-                                            @endif
-                                            @if(is_terlaris($produk))
-                                            <div class="badge-red" style="right: 30px;top: 5px;"><span>HOT</span></div>
-                                            @endif
-                                            @if(is_produkbaru($produk))
-                                            <div class="badge-green" style="right: 30px;top: 5px;"><span>BARU</span></div>
+                                            @else
+                                                @if(is_terlaris($produk))
+                                                <div class="badge-red" style="right: 30px;top: 5px;"><span>HOT</span></div>
+                                                @elseif(is_produkbaru($produk))
+                                                <div class="badge-green" style="right: 30px;top: 5px;"><span>BARU</span></div>
+                                                @endif
                                             @endif
                                             <div class="image-container">
                                                 <a href="{{product_url($produk)}}">
@@ -36,7 +36,7 @@
                     </div><!--.row-->	
                     <div class="small-banner">
                     @foreach(horizontal_banner() as $banner)	
-                        <a href="{{URL::to($banner->url)}}">
+                        <a href="{{url($banner->url)}}">
                         	{{HTML::image(banner_image_url($banner->gambar), 'banner', array('width'=>'1168', 'height'=>'200', "class"=>"img-responsive"))}}
                     	</a>
                 	@endforeach	

@@ -7,5 +7,6 @@
 	{{generate_theme_css('cupcake/assets/css/owl.carousel.css')}}
 	{{generate_theme_css('cupcake/assets/css/owl.theme.css')}}
 	{{generate_theme_css('cupcake/assets/css/jquery.fancybox.css')}}
-	{{createFavicon($toko)}}
+	{{favicon()}}
 	<!-- Other -->
+    {{generate_theme_js('cupcake/assets/js/lib/modernizr.custom.28468.js')}}

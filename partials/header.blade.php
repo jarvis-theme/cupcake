@@ -29,7 +29,7 @@
                             <div id="logo" class="col-xs-12 col-sm-4">
                                 @if(@getimagesize( url(logo_image_url()) ))
                                 <a href="{{ url('home') }}">
-                                    {{HTML::image(logo_image_url(), 'Logo', array('width'=>'310', 'height'=>'108'))}}
+                                    {{HTML::image(logo_image_url(), 'Logo', array('width'=>'auto', 'height'=>'108'))}}
                                 </a>
                                 @else
                                 <h3 style="margin:42px 0;">
@@ -91,22 +91,14 @@
                     </div>
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                        @foreach($mainMenu as $key=>$link)
-                            @if($link->halaman=='1')
-                                <li><a href='{{url("halaman/".strtolower($link->linkTo))}}'>{{$link->nama}}</a></li>
-                            @elseif($link->halaman=='2')
-                                <li><a href='{{url("blog/".strtolower($link->linkTo))}}'>{{$link->nama}}</a></li>
-                            @elseif($link->url=='1')
-                                <li><a href='{{url("http://".strtolower($link->linkTo))}}'>{{$link->nama}}</a></li>
-                            @else
-                                <li><a href='{{url(strtolower($link->linkTo))}}'>{{$link->nama}}</a></li>
-                            @endif
-                        @endforeach
+                            @foreach(main_menu()->link as $link)
+                            <li><a href='{{menu_url($link)}}'>{{$link->nama}}</a></li>
+                            @endforeach
                         </ul>
-                        <div class="col-sm-3 col-md-3 pull-right search-form">
+                        <div class="col-lg-3 col-md-3 pull-right search-form">
                             <form class="navbar-form" role="search" action="{{url('search')}}" method="post">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search" name="search" id="search">
+                                    <input type="text" class="form-control" placeholder="Search" name="search" id="search" required>
                                     <div class="input-group-btn">
                                         <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                                     </div>
@@ -115,6 +107,5 @@
                         </div>        
                     </div>
                 </nav>
-                
                 <!-- Search Navbar - END -->
 			</header>

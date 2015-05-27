@@ -25,13 +25,9 @@ $(document).ready(function() {
 	//THUMB LIST
 	$('#thumb-list').owlCarousel({
 		itemsCustom : [
-			[350, 2],
-			[350, 3],
-			[600, 4],
-			[700, 4],
-			[1000, 4],
-			[1200, 3],
-			[1400, 3]
+			[75, 2],
+			[75, 3],
+			[75, 4],
 		],
 		navigation : true,
 		pagination: false,

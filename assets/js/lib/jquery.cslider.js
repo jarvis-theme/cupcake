@@ -3,9 +3,9 @@
 	/*
 	 * Slider object.
 	 */
-	$.Slider 				= function( options, element ) {
+	$.Slider = function( options, element ) {
 	
-		this.$el	= $( element );
+		this.$el = $( element );
 		
 		this._init( options );
 		

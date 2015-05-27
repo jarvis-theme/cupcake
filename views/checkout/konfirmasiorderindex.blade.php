@@ -8,13 +8,13 @@
 	<div class="inner-column row">
         <div id="left_sidebar" class="col-lg-3 col-xs-12 col-sm-4">
             <div id="advertising" class="block">
-            @foreach(vertical_banner() as $banner)
+                @foreach(vertical_banner() as $banner)
             	<div class="img-block">
-            		<a href="{{URL::to($banner->url)}}">
-            			{{HTML::image(banner_image_url($banner->gambar),'banner',array('width'=>'272','height'=>'391','class'=>'img-responsive'))}}
+            		<a href="{{url($banner->url)}}">
+            			{{HTML::image(banner_image_url($banner->gambar),'banner',array('width'=>'272','height'=>'auto','class'=>'img-responsive'))}}
         			</a>
                 </div>
-            @endforeach
+                @endforeach
             </div>
         </div><!--#left_sidebar-->
         <div id="center_column" class="col-lg-9 col-xs-12 col-sm-8">

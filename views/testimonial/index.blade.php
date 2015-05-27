@@ -18,16 +18,27 @@ Terjadi kesalahan dalam menyimpan data.<br>
                         <div id="left_sidebar" class="col-lg-3 col-xs-12 col-sm-4">
                             <div id="categories" class="block sidey">
                             	<ul class="block-content nav">
-                                @foreach(category_menu() as $side_menu)
+                                @foreach(list_category() as $side_menu)
                                     @if($side_menu->parent == '0')
                                     <li>
                                         <a href="{{category_url($side_menu)}}">{{$side_menu->nama}}<!-- <span class="arrow-right"></span> --></a>
                                         @if($side_menu->anak->count() != 0)
-                                        <ul style="padding: 0px 20px;">
+                                        <ul style="padding-left: 20px;">
                                             @foreach($side_menu->anak as $submenu)
                                             @if($submenu->parent == $side_menu->id)
                                             <li>
-                                                <a href="{{category_url($submenu)}}">{{$submenu->nama}}</a>
+                                                <a href="{{category_url($submenu)}}" style="background-color:transparent">{{$submenu->nama}}</a>
+                                                @if($submenu->anak->count() != 0)
+                                                <ul style="padding-left: 20px;">
+                                                    @foreach($submenu->anak as $submenu2)
+                                                    @if($submenu2->parent == $submenu->id)
+                                                    <li>
+                                                        <a href="{{category_url($submenu2)}}">{{$submenu2->nama}}</a>
+                                                    </li>
+                                                    @endif
+                                                    @endforeach
+                                                </ul>
+                                                @endif
                                             </li>
                                             @endif
                                             @endforeach
@@ -45,7 +56,7 @@ Terjadi kesalahan dalam menyimpan data.<br>
                                     <li>
                                     	<a href="{{product_url($best)}}">
                                         	<div class="img-block">
-                                                {{HTML::image(product_image_url($best->gambar1),'produk',array('width'=>'81','height'=>'64'))}}
+                                                {{HTML::image(product_image_url($best->gambar1),'produk',array('width'=>'81','height'=>'auto'))}}
                                             </div>
                                             <p class="product-name">{{$best->nama}}</p>
                                             <p class="price">{{price($best->hargaJual)}}</p>
@@ -58,13 +69,13 @@ Terjadi kesalahan dalam menyimpan data.<br>
                                 </div>
                             </div>
                             <div id="advertising" class="block">
-                            @foreach(vertical_banner() as $banner)    
+                                @foreach(vertical_banner() as $banner)    
                                 <div class="img-block">
                                     <a href="{{URL::to($banner->url)}}">
-                                        {{HTML::image(banner_image_url($banner->gambar), 'banner', array('width'=>'1168', 'height'=>'200', "class"=>"img-responsive"))}}
+                                        {{HTML::image(banner_image_url($banner->gambar), 'banner', array('width'=>'272','height'=>'auto',"class"=>"img-responsive"))}}
                                     </a>
                                 </div>
-                            @endforeach 
+                                @endforeach 
                             </div>
                             {{ Theme::partial('subscribe') }}
                         </div><!--#left_sidebar-->
@@ -72,7 +83,7 @@ Terjadi kesalahan dalam menyimpan data.<br>
                             <div class="contact-us">
                                 <h2 class="title">Testimonial</h2>
                                 <div class="contact-desc">
-                                    @foreach(recentTestimonial() as $key=>$value)
+                                    @foreach(list_testimonial() as $key=>$value)
                                     <article class="col-lg-12" style="margin-bottom:10px">
                                         <h4><strong>{{$value->nama}}</strong></h4>
                                         <p>
@@ -84,7 +95,7 @@ Terjadi kesalahan dalam menyimpan data.<br>
                                     @endforeach
                                 </div>
                                 <div class="col-lg-12 col-xs-12">
-                                    {{recentTestimonial()->links()}}
+                                    {{list_testimonial()->links()}}
                                 </div>
                                 <form class="col-lg-12 col-xs-12 contact-form" action="{{url('testimoni')}}" method="post">
                                     <h3>Kirim Testimonial</h3>
@@ -100,10 +111,10 @@ Terjadi kesalahan dalam menyimpan data.<br>
                         </div>
                     </div><!--.inner-column-->	
                     <div>
-                    @foreach(horizontal_banner() as $banner)    
+                        @foreach(horizontal_banner() as $banner)    
                         <a href="{{URL::to($banner->url)}}">
                             {{HTML::image(banner_image_url($banner->gambar), 'banner', array('width'=>'1168', 'height'=>'200', "class"=>"img-responsive"))}}
                         </a>
-                    @endforeach 
+                        @endforeach 
                     </div>
                 </div>

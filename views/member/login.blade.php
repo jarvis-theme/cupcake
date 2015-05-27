@@ -1,11 +1,29 @@
+@if(Session::has('error'))
+    <div class="error" id='message' style='display:none'>
+        {{Session::get('error')}}
+    </div>
+@endif
+
+@if(Session::has('success'))
+    <div class="success" id='message' style='display:none'>
+        <p>Selamat, anda sudah berhasil register. Silakan check email untuk mengetahui informasi akun anda.</p>
+    </div>
+@endif
+
+@if(Session::has('errorrecovery'))	
+    <div class="error" id='message' style='display:none'>
+        <p>Maaf, email anda tidak ditemukan.</p>
+    </div>
+@endif  
+
 <div class="container">
 	<div class="inner-column row">
         <div class="col-lg-3 col-xs-12 col-sm-4 pull-right">
             <div id="advertising" class="block">
             @foreach(vertical_banner() as $banner)
             	<div class="img-block">
-            		<a href="{{URL::to($banner->url)}}">
-            			{{HTML::image(banner_image_url($banner->gambar),'banner',array('width'=>'272','height'=>'391','class'=>'img-responsive'))}}
+            		<a href="{{url($banner->url)}}">
+            			{{HTML::image(banner_image_url($banner->gambar),'banner',array('width'=>'272','height'=>'auto','class'=>'img-responsive'))}}
         			</a>
                 </div>
             @endforeach
@@ -17,7 +35,7 @@
 			<br>
 			<h2>Log in</h2>
 			<br>
-            <form class="form-horizontal" action="{{URL::to('member/login')}}" method="post">
+            <form class="form-horizontal" action="{{url('member/login')}}" method="post">
 				<div class="form-group">
 			    	<label for="inputEmail3" class="col-sm-2">Email</label>
 			    	<div class="col-sm-4">
@@ -33,18 +51,17 @@
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
 						<small>
-							<a href="{{URL::to('member/forget-password')}}">Lupa Password?</a>
+							<a href="{{url('member/forget-password')}}">Lupa Password?</a>
 						</small>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="pull-left col-sm-2">
 						<button type="submit" class="btn btn-green">Log in</button>
-						<!-- <input type="submit" value="Login" class="button"> -->
 					</div>
 					<div class="pull-right col-sm-4">
 						<small>Belum punya akun?</small>
-						<a href="{{('member/create')}}" class="btn btn-red">Daftar Baru</a>
+						<a href="{{url('member/create')}}" class="btn btn-red">Daftar Baru</a>
 					</div>
 				</div>
 			</form>

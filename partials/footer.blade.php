@@ -2,46 +2,31 @@
             	<div class="top-footer">
                 	<div class="container">
                     	<div class="row">
-                        	<!-- <div id="small-logo" class="col-xs-12 col-sm-2">
-                                {{--HTML::image(logo_image_url(), 'Logo', array('width'=>'112','height'=>'113'))--}}
-                            </div> -->
                             <div id="about-foot" class="col-xs-12 col-sm-4">
                             	<h4 class="title">Tentang Kami</h4>
                             	<div class="block-content">
                                     <p>{{short_description($aboutUs[1]->isi,400)}}</p>
                                 </div>
                             </div>
-                            @foreach($tautan as $key=>$menu)
-                            @if($key == '1' || $key == '2')
-                            <div id="links-foot" class="col-xs-12 col-sm-2">
-                                <h4 class="title">{{$menu->nama}}</h4>
-                                <div class="block-content">
-                                    <ul>
-                                    @foreach($quickLink as $link_menu)
-                                        @if($menu->id == $link_menu->tautanId)
-                                        <li>
-                                        @if($link_menu->halaman == '1')
-                                            @if($link_menu->linkTo == 'halaman/about-us')
-                                            <a href="{{url(strtolower($link_menu->linkTo))}}">{{$link_menu->nama}}</a>
-                                            @else
-                                            <a href='{{url("halaman/".strtolower($link_menu->linkTo))}}'>{{$link_menu->nama}}</a>
+                            @foreach(other_menu() as $key=>$menu)
+                                @if($key == '0' || $key == '1')
+                                <div id="links-foot" class="col-xs-12 col-sm-2">
+                                    <h4 class="title">{{$menu->nama}}</h4>
+                                    <div class="block-content">
+                                        <ul>
+                                        @foreach($quickLink as $link_menu)
+                                            @if($menu->id == $link_menu->tautanId)
+                                            <li>
+                                                <a href="{{menu_url($link_menu)}}">{{$link_menu->nama}}</a>
+                                            </li>
                                             @endif
-                                        @elseif($link_menu->halaman == '2')
-                                            <a href='{{url("blog/".strtolower($link_menu->linkTo))}}'>{{$link_menu->nama}}</a>
-
-                                        @elseif($link_menu->url == '1')
-                                            <a href="{{url(strtolower($link_menu->linkTo))}}">{{$link_menu->nama}}</a>
-                                        @else
-                                            <a href="{{url(strtolower($link_menu->linkTo))}}">{{$link_menu->nama}}</a>
-                                        @endif
-                                        </li>
-                                        @endif
-                                    @endforeach
-                                    </ul>
+                                        @endforeach
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
-                            @endif
-                            @endforeach                            
+                                @endif
+                            @endforeach 
+
                             <div id="contact-foot" class="col-xs-12 col-sm-4">
                             	<h4 class="title">Workshop Address</h4>
                             	<div class="block-content">
@@ -71,7 +56,22 @@
                 </div>
                 <div class="copyright">
                 	<div class="container">
-                    	<p>&copy; {{ short_description(Theme::place('title'),80) }} {{date('Y')}} All Right Reserved. Powered by <a style="text-decoration: none;" target="_blank" href="http://jarvis-store.com">Jarvis Store</a></p>
+                        <div class="col-sm-6 col-xs-12 pull-right">
+                            @foreach(list_banks() as $banks)    
+                            {{HTML::image(bank_logo($banks),'bank')}}
+                            @endforeach 
+                            @foreach(list_payments() as $pay)
+                                @if($pay->nama == 'ipaymu' && $pay->aktif == 1)
+                                <img src="{{url('img/bank/ipaymu.jpg')}}" alt="ipaymu" />
+                                @endif
+                            @endforeach
+                            @if(count(list_dokus()) > 0 && list_dokus()->status == 1)
+                            <img src="{{url('img/bank/doku.jpg')}}" alt="doku myshortcart" />
+                            @endif
+                        </div>
+                        <div class="col-sm-6 col-xs-12 pull-left">
+                    	   <p>&copy; {{ short_description(Theme::place('title'),80) }} {{date('Y')}} All Right Reserved. Powered by <a style="text-decoration: none;" target="_blank" href="http://jarvis-store.com">Jarvis Store</a></p>
+                       </div>
                     </div>
                 </div>
             </footer>

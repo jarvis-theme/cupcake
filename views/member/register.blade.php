@@ -1,11 +1,29 @@
+@if($errors->all())
+<div class="alert alert-error">
+    Kami menemukan error berikut:
+    <ul>
+    @foreach($errors->all() as $message)
+    <li>{{ $message }}</li>
+    @endforeach
+    </ul>
+</div>
+@endif
+
+@if(Session::has('error'))
+    <div class="alert alert-error">
+        <h3>Kami menemukan error berikut:</h3>
+        <p>{{Session::get('error')}}</p>
+    </div>
+@endif
+
 <div class="container">
 	<div class="inner-column row">
         <div class="col-lg-3 col-xs-12 col-sm-4 pull-right">
             <div id="advertising" class="block">
             @foreach(vertical_banner() as $banner)
             	<div class="img-block">
-            		<a href="{{URL::to($banner->url)}}">
-            			{{HTML::image(banner_image_url($banner->gambar),'banner',array('width'=>'272','height'=>'391','class'=>'img-responsive'))}}
+            		<a href="{{url($banner->url)}}">
+            			{{HTML::image(banner_image_url($banner->gambar),'banner',array('width'=>'272','height'=>'auto','class'=>'img-responsive'))}}
         			</a>
                 </div>
             @endforeach
@@ -85,11 +103,9 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<div class="col-lg-offset-2 col-lg-10">
+					<div class="col-lg-offset-2 col-lg-10 col-xs-offset-1">
 						<div class="checkbox">
-							<label>
-								<input name='readme' value="1" type="checkbox"> Saya telah membaca dan menyetujui <a href="{{URL::to('service')}}" target="_blank" >Privacy Policy</a>
-							</label>
+							<input name='readme' value="1" type="checkbox"> Saya telah membaca dan menyetujui <a href="{{url('service')}}" target="_blank" >Privacy Policy</a>
 						</div>
 					</div>
 				</div>

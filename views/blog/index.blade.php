@@ -21,13 +21,13 @@
                                 </ul>
                             </div>
                             <div id="advertising" class="block">
-                            @foreach(vertical_banner() as $banner)
+                                @foreach(vertical_banner() as $banner)
                             	<div class="img-block">
-                            		<a href="{{URL::to($banner->url)}}">
-                            			{{HTML::image(banner_image_url($banner->gambar),'banner',array('width'=>'272','height'=>'391','class'=>'img-responsive'))}}
+                            		<a href="{{url($banner->url)}}">
+                            			{{HTML::image(banner_image_url($banner->gambar),'banner',array('width'=>'272','height'=>'auto','class'=>'img-responsive'))}}
                         			</a>
                                 </div>
-                            @endforeach
+                                @endforeach
                             </div>
                         </div><!--#left_sidebar-->
                         <div id="center_column" class="col-lg-9 col-xs-12 col-sm-8">
@@ -36,9 +36,9 @@
                                     <h2 class="title">Blog</h2>
                                     <div class="clr"></div>
                                 </div>
-                                @if(count(list_blog(5,@$blog_category)) > 0)
+                                @if(count(list_blog(null,@$blog_category)) > 0)
                                 <div class="row">
-                                    @foreach(list_blog(5,@$blog_category) as $blog)
+                                    @foreach(list_blog(null,@$blog_category) as $blog)
                                     <article class="col-lg-12" style="margin-bottom:10px">
 							            <h4><strong><a href="{{blog_url($blog)}}">{{$blog->judul}}</a></strong></h4>
 							            <p>
@@ -53,7 +53,7 @@
                                     @endforeach
                                 </div>
                                 <div class="pagination">
-									{{list_blog(5,@$blog_category)->links()}}
+									{{list_blog(null,@$blog_category)->links()}}
                                 </div>
                                 @else
                                 <article style="font-style:italic; text-align:center;">

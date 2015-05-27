@@ -34,14 +34,14 @@
             <div id="advertising" class="block">
             	<div class="title"><h2>My Account</h2></div>
             	<ul class="nav">
-					<li><a href="{{URL::to('member')}}">Order History</a></li>                         
-					<li><a href="{{URL::to('member/profile/edit')}}">Edit Profile</a></li>
+					<li><a href="{{url('member')}}">Order History</a></li>                         
+					<li><a href="{{url('member/profile/edit')}}">Edit Profile</a></li>
 				</ul>
             </div>            
         </div>
         <div id="center_column" class="col-md-9">
 			@if($pengaturan->checkoutType!=2)
-					@if($order->count())
+					@if($order->count() > 0)
 						<div class="table-responsive">
 						<table class="table table-hover">
 							<thead>
@@ -86,7 +86,7 @@
 										</ul>
 									</td>
 									<td class="quantity">
-										{{ jadiRupiah($item->total)	}}
+										{{ price($item->total)	}}
 									</td>
 									<td class="sub-price">
 										{{ $item->noResi }}
@@ -138,12 +138,12 @@
 									<td style="text-align: center;">
 									@if($pengaturan->checkoutType==3) 
 										@if($item->status < 4)
-										<button onclick="window.open('{{URL::to('konfirmasipreorder/'.$item->id)}}','_blank')" class="btn btn-small btn-success" data-title="Edit" data-placement="top" data-tip="tooltip"><i class="fa fa-check"></i></button>
+										<button onclick="window.open('{{url('konfirmasipreorder/'.$item->id)}}','_blank')" class="btn btn-small btn-success" data-title="Edit" data-placement="top" data-tip="tooltip"><i class="fa fa-check"></i></button>
 										@endif 
 									@endif
 									@if($pengaturan->checkoutType==1) 
 										@if($item->status <= 1)
-										<button onclick="window.open('{{URL::to('konfirmasiorder/'.$item->id)}}','_blank')" class="btn btn-small btn-success" data-title="Edit" data-placement="top" data-tip="tooltip"><i class="fa fa-check"></i></button>
+										<button onclick="window.open('{{url('konfirmasiorder/'.$item->id)}}','_blank')" class="btn btn-small btn-success" data-title="Edit" data-placement="top" data-tip="tooltip"><i class="fa fa-check"></i></button>
 										@endif 
 									@endif
 									</td>
@@ -151,6 +151,7 @@
 							@endforeach
 							</tbody>
 						</table>
+                        {{$order->links()}} 
 						</div>
 					@else
 						<span> Belum ada data order</span>
@@ -195,14 +196,14 @@
 							</tbody>
 						
 					@else
-					<tr>
-						<td colspan="2">
-							Inquiry anda masih kosong.
-						</td>
-					</tr>
+						<tr>
+							<td colspan="2">
+								Inquiry anda masih kosong.
+							</td>
+						</tr>
 					@endif
-					</table>
-					</div>
+							</table>
+						</div>
 				@endif 
 				
 			   </div>

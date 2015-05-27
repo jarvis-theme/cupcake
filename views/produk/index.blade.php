@@ -3,16 +3,27 @@
                         <div id="left_sidebar" class="col-lg-3 col-xs-12 col-sm-4">
                             <div id="categories" class="block sidey">
                             	<ul class="block-content nav">
-                                @foreach(category_menu() as $side_menu)
+                                @foreach(list_category() as $side_menu)
                                     @if($side_menu->parent == '0')
                                     <li>
                                         <a href="{{category_url($side_menu)}}">{{$side_menu->nama}}<!-- <span class="arrow-right"></span> --></a>
                                         @if($side_menu->anak->count() != 0)
-                                        <ul style="padding: 0px 20px;">
+                                        <ul style="padding-left: 20px;">
                                             @foreach($side_menu->anak as $submenu)
                                             @if($submenu->parent == $side_menu->id)
                                             <li>
-                                                <a href="{{category_url($submenu)}}">{{$submenu->nama}}</a>
+                                                <a href="{{category_url($submenu)}}" style="background-color:transparent">{{$submenu->nama}}</a>
+                                                @if($submenu->anak->count() != 0)
+                                                <ul style="padding-left: 20px;">
+                                                    @foreach($submenu->anak as $submenu2)
+                                                    @if($submenu2->parent == $submenu->id)
+                                                    <li>
+                                                        <a href="{{category_url($submenu2)}}">{{$submenu2->nama}}</a>
+                                                    </li>
+                                                    @endif
+                                                    @endforeach
+                                                </ul>
+                                                @endif
                                             </li>
                                             @endif
                                             @endforeach
@@ -30,7 +41,7 @@
                                     <li>
                                     	<a href="{{product_url($best)}}">
                                         	<div class="img-block">
-                                                {{HTML::image(product_image_url($best->gambar1),'produk',array('width'=>'81','height'=>'64'))}}
+                                                {{HTML::image(product_image_url($best->gambar1),'produk',array('width'=>'81','height'=>'auto'))}}
                                             </div>
                                             <p class="product-name">{{$best->nama}}</p>
                                             <p class="price">{{price($best->hargaJual)}}</p>
@@ -55,13 +66,13 @@
                                 </ul>
                             </div>
                             <div id="advertising" class="block">
-                            @foreach(vertical_banner() as $banner)    
+                                @foreach(vertical_banner() as $banner)    
                                 <div class="img-block">
                                     <a href="{{url($banner->url)}}">
-                                        {{HTML::image(banner_image_url($banner->gambar), 'banner', array('width'=>'1168', 'height'=>'200', "class"=>"img-responsive"))}}
+                                        {{HTML::image(banner_image_url($banner->gambar), 'banner', array('width'=>'272','height'=>'auto', "class"=>"img-responsive"))}}
                                     </a>
                                 </div>
-                            @endforeach 
+                                @endforeach 
                             </div>
                             {{ Theme::partial('subscribe') }}
                         </div><!--#left_sidebar-->
@@ -79,18 +90,19 @@
                                     <div class="clr"></div>
                                 </div>
                                 <div class="row">
-                                @if($view == '' || $view == 'grid')
+                                @if(count(list_product(null, @$category, @$collection)) > 0)
+                                    @if($view == '' || $view == 'grid')
                                     <ul class="grid">
-                                    @foreach(list_product(12, @$category) as $myproduk)
+                                        @foreach(list_product(null, @$category, @$collection) as $myproduk)
                                         <li class="col-xs-6 col-sm-4">
                                             @if(is_outstok($myproduk))
-                                            <div class="badge-black" style="right: 30px;top: 5px; z-index: 1;"><span>KOSONG</span></div>
-                                            @endif
-                                            @if(is_terlaris($myproduk))
-                                            <div class="badge-red" style="right: 30px;top: 5px;"><span>HOT</span></div>
-                                            @endif
-                                            @if(is_produkbaru($myproduk))
-                                            <div class="badge-green" style="right: 30px;top: 5px;"><span>BARU</span></div>
+                                            <div class="empty badge-black"><span>KOSONG</span></div>
+                                            @else
+                                                @if(is_terlaris($myproduk))
+                                                <div class="hot badge-red"><span>HOT</span></div>
+                                                @elseif(is_produkbaru($myproduk))
+                                                <div class="hot badge-green"><span>BARU</span></div>
+                                                @endif
                                             @endif
                                             <div class="image-container">
                                                 <a href="{{product_url($myproduk)}}">
@@ -101,11 +113,11 @@
                                             <span class="price">{{price($myproduk->hargaJual)}}</span>
                                             <a class="view" href="{{product_url($myproduk)}}">Lihat</a><br>
                                         </li>
-                                    @endforeach
+                                        @endforeach
                                     </ul>
-                                @elseif($view == 'list')
+                                    @elseif($view == 'list')
                                     <ul class="list">
-                                    @foreach(list_product(12, @$category) as $myproduk)
+                                        @foreach(list_product(null, @$category, @$collection) as $myproduk)
                                         <li class="col-xs-12">
                                             <div class="image-container col-xs-12 col-md-3" style="padding: 0;">
                                                 <a href="{{product_url($myproduk)}}">
@@ -118,21 +130,25 @@
                                             <a class="view pull-left" href="{{product_url($myproduk)}}">Lihat</a>
                                             <br><br><br>
                                         </li>
-                                    @endforeach
+                                        @endforeach
                                     </ul>
+                                    @endif
+                                @else
+                                    <article style="font-style:italic; text-align:center;">
+                                        <i>Produk tidak ditemukan</i>
+                                    </article>
                                 @endif
                                 </div>
-                                <div class="pagination">
-                                    {{list_product(6, @$category)->links()}}
-                                </div>
+                                
+                                {{list_product(null, @$category, @$collection)->links()}}
                             </div>
                         </div> <!--.center_column-->
                     </div><!--.inner-column-->	
                     <div>
-                    @foreach(horizontal_banner() as $banner)    
+                        @foreach(horizontal_banner() as $banner)    
                         <a href="{{url($banner->url)}}">
                             {{HTML::image(banner_image_url($banner->gambar), 'banner', array('width'=>'1168', 'height'=>'200', "class"=>"img-responsive"))}}
                         </a>
-                    @endforeach 
+                        @endforeach 
                     </div>
                 </div>

@@ -13,7 +13,7 @@
 				<thead>
 					<tr>
 						<th><span>ID Order</span></th>
-						<th class="desc"><span>Tanggal Order</span></th>
+						<th><span>Tanggal Order</span></th>
 						<th><span>Detail Order</span></th>
 						<th><span>Jumlah</span></th>
 						<th><span>Jumlah yg belum dibayar</span></th>
@@ -37,7 +37,7 @@
 							{{waktu($order->tanggalPreorder)}}
 						@endif
 						</td>
-						<td class="desc">
+						<td>
 							<ul>
 							@if ($checkouttype==1)
 								@foreach ($order->detailorder as $detail)
@@ -51,20 +51,20 @@
 						</td>
 						<td class="quantity">
 							@if($checkouttype==1)
-							{{jadiRupiah($order->total)}}
+							{{price($order->total)}}
 							
 							@else 
 								@if($order->status < 2)
-									{{jadiRupiah($order->total)}}
+									{{price($order->total)}}
 								@elseif(($order->status > 1 && $order->status < 4) || $order->status==7)
-									{{jadiRupiah($order->total - $order->dp)}}
+									{{price($order->total - $order->dp)}}
 								@else
 									0
 								@endif
 							@endif
 						</td>
 						<td class="quantity">
-							{{($order->status==2 || $order->status==3) ? jadiRupiah(0) : ' - '.jadiRupiah($order->total)}}
+							{{($order->status==2 || $order->status==3) ? price(0) : ' - '.price($order->total)}}
 						</td>
 						<td class="sub-price">
 							{{ $order->noResi}}
@@ -74,29 +74,29 @@
 							@if($order->status==0)
 								<span class="label label-warning">Pending</span>
 							@elseif($order->status==1)
-								<span class="label label-important">Konfirmasi diterima</span>
+								<span class="label label-danger">Konfirmasi diterima</span>
 							@elseif($order->status==2)
-								<span class="label label-info">Pembayaran diterima</span>
+								<span class="label label-success">Pembayaran diterima</span>
 							@elseif($order->status==3)
 								<span class="label label-info">Terkirim</span>
 							@elseif($order->status==4)
-								<span class="label label-info">Batal</span>
+								<span class="label label-default">Batal</span>
 							@endif
 						@else 
 							@if($order->status==0)
 								<span class="label label-warning">Pending</span>
 							@elseif($order->status==1)
-								<span class="label label-important">Konfirmasi DP diterima</span>
+								<span class="label label-danger">Konfirmasi DP diterima</span>
 							@elseif($order->status==2)
 								<span class="label label-info">DP terbayar</span>
 							@elseif($order->status==3)
 								<span class="label label-info">Menunggu pelunasan</span>
 							@elseif($order->status==4)
-								<span class="label label-info">Pembayaran lunas</span>
+								<span class="label label-success">Pembayaran lunas</span>
 							@elseif($order->status==5)
 								<span class="label label-info">Terkirim</span>
 							@elseif($order->status==6)
-								<span class="label label-info">Batal</span>
+								<span class="label label-default">Batal</span>
 							@elseif($order->status==7)
 								<span class="label label-info">Konfirmasi Pelunasan diterima</span>
 							@endif
@@ -117,11 +117,11 @@
 				@endif
 				<div class="form-group">
 				  <label  class="control-label"> Nama Pengirim:</label>
-				  <input type="text" class="form-control" id="search" placeholder="Nama Pengirim" name='nama' required>
+				  <input type="text" class="form-control" placeholder="Nama Pengirim" name='nama' required>
 				</div>
 				<div class="form-group">
 				  <label  class="control-label"> No Rekening:</label>
-				  <input type="text" class="form-control" id="search" placeholder="No Rekening" name='noRekPengirim' required>
+				  <input type="text" class="form-control" placeholder="No Rekening" name='noRekPengirim' required>
 				</div>
 				<div class="form-group">
 				  <label  class="control-label"> Rekening Tujuan:</label>
@@ -135,15 +135,14 @@
 				<div class="form-group">
 				  <label  class="control-label"> Jumlah:</label>
 				  @if($checkouttype==1)        
-					<input type="text" class="form-control" id="search" placeholder="jumlah yg terbayar" name='jumlah' value='{{$order->total}}' required>
+					<input type="text" class="form-control" placeholder="jumlah yg terbayar" name='jumlah' value='{{$order->total}}' required>
 				  @else
 					@if($order->status < 2)
-					  <input class="form-control" id="search" placeholder="jumlah yg terbayar" type="text" name='jumlah' value='{{$order->dp}}' required>
+					  <input class="form-control" placeholder="jumlah yg terbayar" type="text" name='jumlah' value='{{$order->dp}}' required>
 					@elseif(($order->status > 1 && $order->status < 4) || $order->status==7)
-					  <input class="form-control" id="search" placeholder="jumlah yg terbayar" type="text" name='jumlah' value='{{$order->total - $order->dp}}' required>
+					  <input class="form-control" placeholder="jumlah yg terbayar" type="text" name='jumlah' value='{{$order->total - $order->dp}}' required>
 					@endif
 				  @endif
-				  
 				</div>
 				<button type="submit" class="btn btn-green">Konfirmasi Order</button>
 				{{Form::close()}}
@@ -183,12 +182,11 @@
 		  <br>
 		@endif 
 	  
-
-	  @if($order->jenisPembayaran==2)
+		@if($order->jenisPembayaran==2)
 		  <h3><center>Konfirmasi Pemabayaran Via Paypal</center></h3><br>
 		  <p>Silakan melakukan pembayaran dengan paypal Anda secara online via paypal payment gateway. Transaksi ini berlaku jika pembayaran dilakukan sebelum {{$expired}}. Klik tombol "Bayar Dengan Paypal" di bawah untuk melanjutkan proses pembayaran.</p>
 		  {{$paypalbutton}}
 		  <br>
-	  @endif
-   </div>
+		@endif
+	</div>
 </div>

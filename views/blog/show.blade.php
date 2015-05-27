@@ -21,25 +21,25 @@
                                 </ul>
                             </div>
                             <div id="advertising" class="block">
-                            @foreach(vertical_banner() as $banner)
+                                @foreach(vertical_banner() as $banner)
                             	<div class="img-block">
-                            		<a href="{{URL::to($banner->url)}}">
-                            			{{HTML::image(banner_image_url($banner->gambar),'banner',array('width'=>'272','height'=>'391','class'=>'img-responsive'))}}
+                            		<a href="{{url($banner->url)}}">
+                            			{{HTML::image(banner_image_url($banner->gambar),'banner',array('width'=>'272','height'=>'auto','class'=>'img-responsive'))}}
                         			</a>
                                 </div>
-                            @endforeach
+                                @endforeach
                             </div>
                         </div><!--#left_sidebar-->
                         <div id="center_column" class="col-lg-9 col-xs-12 col-sm-8">
                             <div class="product-list">
                                 <section class="content">
                                     <div class="entry">
-                                        <h2 class="title">{{$artikel->judul}}</h2>
+                                        <h2 class="title">{{$detailblog->judul}}</h2>
                                         <ul style="margin-bottom: 5px;">
-                                            <span class="date-post"><i class="fa fa-calendar"></i> {{waktuTgl($artikel->created_at)}}</span>&nbsp;&nbsp;
+                                            <span class="date-post"><i class="fa fa-calendar"></i> {{waktuTgl($detailblog->created_at)}}</span>&nbsp;&nbsp;
                                             <span class="date-post"><i class="fa fa-tags"></i> <a href="{{blog_category_url(@$detailblog->kategori)}}">{{@$detailblog->kategori->nama}}</a></span>
                                         </ul>
-                                        <p>{{$artikel->isi}}</p>
+                                        <p>{{$detailblog->isi}}</p>
                                     </div><!--entry-->
                                     <hr>
                                     <div class="navigate comments clearfix">
@@ -60,7 +60,7 @@
                                     <hr>
                                     <div>
                                         {{$fbscript}}
-                                        {{fbcommentbox(blog_url($artikel), '640px', '5', 'light')}}
+                                        {{fbcommentbox(blog_url($detailblog), '100%', '5', 'light')}}
                                     </div>
                                 </section>
                             </div>
