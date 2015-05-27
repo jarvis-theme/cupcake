@@ -14,7 +14,7 @@
                                     <h4 class="title">{{$menu->nama}}</h4>
                                     <div class="block-content">
                                         <ul>
-                                        @foreach($quickLink as $link_menu)
+                                        @foreach($menu->link as $link_menu)
                                             @if($menu->id == $link_menu->tautanId)
                                             <li>
                                                 <a href="{{menu_url($link_menu)}}">{{$link_menu->nama}}</a>
