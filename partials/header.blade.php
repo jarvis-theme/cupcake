@@ -1,16 +1,16 @@
             <div class="top-header">
-                <div class="container" style="padding-bottom:5px">
+                <div class="container" id="toplink">
                     <div class="pull-right">
                         @if( !is_login() )
-                        <span style="color:#fff">
+                        <span class="white">
                             <small>
-                            {{HTML::link('member', 'Log in', array('style'=>'color: #fff'))}} | {{HTML::link('member/create', 'Register', array('style'=>'color: #fff'))}}
+                            {{HTML::link('member', 'Log in', array('class'=>'white'))}} | {{HTML::link('member/create', 'Register', array('class'=>'white'))}}
                             </small>
                         </span>
                         @else
-                        <span style="color:#fff">
+                        <span class="white">
                             <small>
-                            Selamat datang, <a href="{{url('member')}}" style="color:#fff;">{{user()->nama}}</a> | {{HTML::link('logout', 'Log out', array('style'=>'color: #fff'))}}
+                            Selamat datang, <a href="{{url('member')}}" class="white">{{user()->nama}}</a> | {{HTML::link('logout', 'Log out', array('class'=>'white'))}}
                             </small>
                         </span>
                         @endif
@@ -20,65 +20,53 @@
             <header>
             	<div class="top-head">
                 	<div class="container">
-                    	<div class="row desktop-only">
-                            <div id="top_testimonial" class="col-xs-12 col-sm-4">
+                    	<div class="row desktop-only col-sm-8">
+                            <div id="top_testimonial" class="col-sm-6 pull-left">
                                 @foreach(random_testimonial(1) as $value)
                                 <p>{{short_description($value->isi, 94)}} <br><span>~{{$value->nama}}</span></p>
                                 @endforeach
                             </div>
-                            <div id="logo" class="col-xs-12 col-sm-4">
+                            <div id="logo" class="col-sm-6">
                                 @if(@getimagesize( url(logo_image_url()) ))
                                 <a href="{{ url('home') }}">
-                                    {{HTML::image(logo_image_url(), 'Logo', array('width'=>'auto', 'height'=>'108'))}}
+                                    {{HTML::image(logo_image_url(), 'Logo', array('class'=>'desktop-logo'))}}
                                 </a>
                                 @else
-                                <h3 style="margin:42px 0;">
+                                <h3 id="text-logo">
                                     <strong>
-                                        <a href="{{url('home')}}" style="color: #ff7d68;">{{ short_description(Theme::place('title'),16) }}</a>
+                                        <a href="{{url('home')}}" class="url-textlogo">{{ short_description(Theme::place('title'),16) }}</a>
                                     </strong>
                                 </h3>
                                 @endif
                             </div>
-                            <div id="shopping-cart" class="col-xs-12 col-sm-4">
-                                <div class="cart-block" id="shoppingcartplace">
-                                    {{shopping_cart()}}
-                                </div>
-                            </div>
                         </div>
-                        <div class="row mobile-only">
+                        <div class="row mobile-only logo-mobile">
                         	<div id="logo" class="col-xs-12">
                                 @if(@getimagesize(url( logo_image_url() )))
                                 <a href="{{url('home')}}">
-                                    {{HTML::image(logo_image_url(), 'Logo', array('width'=>'310', 'height'=>'108'))}}
+                                    {{HTML::image(logo_image_url(), 'Logo', array('class'=>'desktop-logo'))}}
                                 </a>
                                 @else
-                                <a style="text-decoration:none" href="{{url('home')}}">
-                                    <h1 style="color: #ff7d68;">{{ short_description(Theme::place('title'),30) }}</h1>
+                                <a class="nodecoration" href="{{url('home')}}">
+                                    <h1 class="url-textlogo">{{ short_description(Theme::place('title'),30) }}</h1>
                                 </a>
                                 @endif
                             </div>
-                            @if(count(random_testimonial(1)) > 0)
                             <div id="top_testimonial" class="col-xs-6">
                                 @foreach(random_testimonial(1) as $value)
                                 <p>{{short_description($value->isi, 94)}} <br><span>~{{$value->nama}}</span></p>
                                 @endforeach
                             </div>
-                            <div id="shopping-cart" class="col-xs-6">
-                                <div class="cart-block">
+                        </div>
+                        <div class="row col-xs-6 col-sm-4 carts">
+                            <div id="shopping-cart">
+                                <div class="cart-block" id="shoppingcartplace">
                                     {{shopping_cart()}}
                                 </div>
                             </div>
-                            @else
-                            <div id="shopping-cart" class="col-xs-12">
-                                <div class="cart-block pull-left">
-                                    {{shopping_cart()}}
-                                </div>
-                            </div>
-                            @endif
                         </div>
                     </div>
-                </div> <!--.top-head-->
-                <!-- Search Navbar - START -->
+                </div>
                 <nav id="menu" class="navbar navbar-default" role="navigation">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -98,7 +86,7 @@
                         <div class="col-lg-3 col-md-3 pull-right search-form">
                             <form class="navbar-form" role="search" action="{{url('search')}}" method="post">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search" name="search" id="search" required>
+                                    <input type="text" class="form-control" placeholder="Cari" name="search" id="search" required>
                                     <div class="input-group-btn">
                                         <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                                     </div>
@@ -107,5 +95,4 @@
                         </div>        
                     </div>
                 </nav>
-                <!-- Search Navbar - END -->
 			</header>

@@ -1,32 +1,14 @@
-@if($errors->all())
-<div class="alert alert-error">
-    Kami menemukan error berikut:
-    <ul>
-    @foreach($errors->all() as $message)
-    <li>{{ $message }}</li>
-    @endforeach
-    </ul>
-</div>
-@endif
-
-@if(Session::has('error'))
-    <div class="alert alert-error">
-        <h3>Kami menemukan error berikut:</h3>
-        <p>{{Session::get('error')}}</p>
-    </div>
-@endif
-
 <div class="container">
 	<div class="inner-column row">
         <div class="col-lg-3 col-xs-12 col-sm-4 pull-right">
             <div id="advertising" class="block">
-            @foreach(vertical_banner() as $banner)
+            	@foreach(vertical_banner() as $banner)
             	<div class="img-block">
             		<a href="{{url($banner->url)}}">
-            			{{HTML::image(banner_image_url($banner->gambar),'banner',array('width'=>'272','height'=>'auto','class'=>'img-responsive'))}}
+            			{{HTML::image(banner_image_url($banner->gambar),'Info Promo',array('width'=>'272','height'=>'auto','class'=>'img-responsive'))}}
         			</a>
                 </div>
-            @endforeach
+            	@endforeach
             </div>
             <br>
         </div>
@@ -62,19 +44,19 @@
 				<div class="form-group">
 					<label for="dropdown" class="col-lg-2">Negara</label>
 					<div class="col-lg-10">
-						{{Form::select('negara',array('' => '-- Pilih Negara --') + $negara,Input::old(''),array('required', 'id="negara" data-rel="chosen" class="form-control"'))}}
+						{{Form::select('negara',array('' => '-- Pilih Negara --') + $negara,Input::old(''),array('required', 'id'=>"negara","data-rel"=>"chosen","class"=>"form-control"))}}
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="dropdown" class="col-lg-2">Provinsi</label>
 					<div class="col-lg-10">
-						{{Form::select('provinsi',array('' => '-- Pilih Provinsi --'), Input::old("provinsi"),array('required', 'id="provinsi" data-rel="chosen" class="form-control"'))}}
+						{{Form::select('provinsi',array('' => '-- Pilih Provinsi --'), Input::old("provinsi"),array('required', 'id'=>"provinsi","data-rel"=>"chosen","class"=>"form-control"))}}
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="dropdown" class="col-lg-2">Kota</label>
 					<div class="col-lg-10">
-						{{Form::select('kota',array('' => '-- Pilih Kota --'), Input::old("kota"),array('required', 'id="kota" data-rel="chosen" class="form-control"'))}}
+						{{Form::select('kota',array('' => '-- Pilih Kota --'), Input::old("kota"),array('required', 'id'=>"kota","data-rel"=>"chosen","class"=>"form-control"))}}
 					</div>
 				</div>
 				<div class="form-group">

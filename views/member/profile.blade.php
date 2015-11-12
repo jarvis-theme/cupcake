@@ -1,21 +1,3 @@
-@if($errors->all())
-<div class="error" id='message' style='display:none'>
-	Kami menemukan error berikut:
-	<br>
-	<ul>
-		@foreach($errors->all() as $message)
-		<li>{{ $message }}</li>
-		@endforeach
-	</ul>
-</div>
-@endif
-
-@if(Session::has('success'))
-<div class="success" id='message' style='display:none'>
-	Selamat anda telah terdaftar.      
-</div>
-@endif
-
 <div class="top-list container">
     <h2 class="title"><i class="fa fa-user"></i> &nbsp;Edit Profile</h2>
     <div class="clr"></div>
@@ -38,23 +20,23 @@
 				<div class="form-group">
 					<label for="inputName" class="col-md-2 control-label">Name</label>
 					<div class="col-md-4">
-						<input type="text" class="form-control" id="inputName" name="nama" value='{{$user->nama}}' required placeholder="Name">
+						<input type="text" class="form-control" id="inputName" name="nama" value='{{$user->nama}}' placeholder="Name" required>
 					</div>
 				</div>            
 				<div class="form-group">
 					<label for="inputEmail1" class="col-md-2 control-label">Email</label>
 					<div class="col-md-4">
-						<input type="email" class="form-control" name='email' value='{{$user->email}}' required id="inputEmail1" placeholder="Email">
+						<input type="email" class="form-control" name='email' value='{{$user->email}}' id="inputEmail1" placeholder="Email" required>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="inputPhone" class="col-md-2 control-label">Telepon</label>
 					<div class="col-md-4">
-						<input type="text" class="form-control" id="inputPhone" name='telp' value='{{$user->telp}}' required placeholder="Phone">
+						<input type="text" class="form-control" id="inputPhone" name='telp' value='{{$user->telp}}' placeholder="Phone" required>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="inputCountry" class="col-md-2 control-label">Country</label>
+					<label for="inputCountry" class="col-md-2 control-label">Negara</label>
 					<div class="col-md-4">
 						{{Form::select('negara',array('' => '-- Pilih Negara --') + $negara , ($user ? $user->negara :(Input::old("negara")? Input::old("negara") :"")), array('required'=>'', 'id'=>'negara', 'class'=>'form-control'))}}
 					</div>

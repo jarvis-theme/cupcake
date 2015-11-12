@@ -6,7 +6,7 @@
 	                        	<ul class="block-content">
 	                        		@foreach(list_blog(5) as $artikel)
 	                                <li>
-	                                    <h5 class="title-news" style="margin-bottom: 5px;"><a href="{{blog_url($artikel)}}">{{short_description($artikel->judul, 28)}}</a></h5>
+	                                    <h5 class="title-news article-title"><a href="{{blog_url($artikel)}}">{{short_description($artikel->judul, 28)}}</a></h5>
 	                                    <span class="date-post"><i class="fa fa-calendar"></i> {{date("d F Y", strtotime($artikel->created_at))}}</span>
 	                                </li>
 	                                @endforeach
@@ -16,7 +16,7 @@
                             	<div class="title"><h2>Kategori</h2></div>
 	                        	<ul class="block-content">
                             		@foreach(list_blog_category() as $kat)
-                            		<span style="text-decoration: underline;"><a href="{{blog_category_url($kat)}}">{{$kat->nama}}</a></span>&nbsp;&nbsp;
+                            		<span class="underline"><a href="{{blog_category_url($kat)}}">{{$kat->nama}}</a></span>&nbsp;&nbsp;
                                     @endforeach	
                                 </ul>
                             </div>
@@ -24,23 +24,25 @@
                                 @foreach(vertical_banner() as $banner)
                             	<div class="img-block">
                             		<a href="{{url($banner->url)}}">
-                            			{{HTML::image(banner_image_url($banner->gambar),'banner',array('width'=>'272','height'=>'auto','class'=>'img-responsive'))}}
+                            			{{HTML::image(banner_image_url($banner->gambar),'Info Promo',array('width'=>'272','height'=>'auto','class'=>'img-responsive'))}}
                         			</a>
                                 </div>
                                 @endforeach
                             </div>
-                        </div><!--#left_sidebar-->
+                        </div>
                         <div id="center_column" class="col-lg-9 col-xs-12 col-sm-8">
                             <div class="product-list">
                                 <section class="content">
                                     <div class="entry">
                                         <h2 class="title">{{$detailblog->judul}}</h2>
-                                        <ul style="margin-bottom: 5px;">
+                                        <ul class="article-title">
                                             <span class="date-post"><i class="fa fa-calendar"></i> {{waktuTgl($detailblog->created_at)}}</span>&nbsp;&nbsp;
-                                            <span class="date-post"><i class="fa fa-tags"></i> <a href="{{blog_category_url(@$detailblog->kategori)}}">{{@$detailblog->kategori->nama}}</a></span>
+                                            @if($detailblog->kategori != '')
+                                            <span class="date-post"><i class="fa fa-tags"></i> <a href="{{blog_category_url(@$detailblog)}}">{{@$detailblog->kategori->nama}}</a></span>
+                                            @endif
                                         </ul>
                                         <p>{{$detailblog->isi}}</p>
-                                    </div><!--entry-->
+                                    </div>
                                     <hr>
                                     <div class="navigate comments clearfix">
                                     @if(isset($prev))
@@ -51,7 +53,7 @@
 
                                     @if(isset($next))
                                         <div class="pull-right">
-                                            <a style="float: right;" href="{{$next->slug}}">Selanjutnya &rarr;</a>
+                                            <a class="rightside" href="{{$next->slug}}">Selanjutnya &rarr;</a>
                                         </div>
                                     @else
                                         <div class="pull-right"></div>
@@ -64,6 +66,6 @@
                                     </div>
                                 </section>
                             </div>
-                        </div> <!--.center_column-->
-                    </div><!--.inner-column-->
+                        </div>
+                    </div>
                 </div>

@@ -1,20 +1,3 @@
-@if(Session::has('error'))
-	<div class="error" id='message' style='display:none'>
-		{{Session::get('error')}}
-	</div>
-@endif
-@if(Session::has('success'))
-	<div class="success" id='message' style='display:none'>
-		<p>Selamat, anda sudah berhasil register. Silakan check email untuk mengetahui informasi akun anda.</p>
-	</div>
-@endif
-@if(Session::has('errorrecovery'))
-	<div class="error" id='message' style='display:none'>
-		<p>Maaf, email anda tidak ditemukan.</p>
-	</div>
-@endif	
-
-
 <div class="container">
 	<div class="inner-column row">
 		<div class="col-sm-6">
@@ -43,7 +26,7 @@
 		<div class="col-sm-4 col-sm-offset-1">
 			@foreach(vertical_banner() as $item)
 			<a href="{{url($item->url)}}">
-				<img src="{{url(banner_image_url($item->gambar))}}" />
+				<img src="{{url(banner_image_url($item->gambar))}}" alt="Info Promo" />
 			</a>
 			@endforeach
 		</div>

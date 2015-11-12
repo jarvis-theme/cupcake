@@ -28,10 +28,10 @@
                             @endforeach 
 
                             <div id="contact-foot" class="col-xs-12 col-sm-4">
-                            	<h4 class="title">Workshop Address</h4>
+                            	<h4 class="title">Alamat Kami</h4>
                             	<div class="block-content">
                                     <p>{{@$kontak->alamat}}</p>
-                                    <p><strong>Phone :</strong> {{@$kontak->telepon ? $kontak->telepon.'&nbsp;&nbsp;' : '-&nbsp;&nbsp;'}}  <strong>HP :</strong> {{@$kontak->hp ? $kontak->hp : '-&nbsp;&nbsp;'}}</p>
+                                    <p><strong>Telepon :</strong> {{@$kontak->telepon ? $kontak->telepon.'&nbsp;&nbsp;' : '-&nbsp;&nbsp;'}}  <strong>HP :</strong> {{@$kontak->hp ? $kontak->hp : '-&nbsp;&nbsp;'}}</p>
                                     <ul class="social">
                                         @if($kontak->fb)
                                     	<li><a href="{{url($kontak->fb)}}"><i class="fa fa-facebook"></i></a></li>
@@ -63,6 +63,9 @@
                             @foreach(list_payments() as $pay)
                                 @if($pay->nama == 'ipaymu' && $pay->aktif == 1)
                                 <img src="{{url('img/bank/ipaymu.jpg')}}" alt="ipaymu" />
+                                @endif
+                                @if($pay->nama == 'bitcoin' && $pay->aktif == 1)
+                                <img src="{{url('img/bitcoin.png')}}" alt="bitcoin" title="Payment" />
                                 @endif
                             @endforeach
                             @if(count(list_dokus()) > 0 && list_dokus()->status == 1)

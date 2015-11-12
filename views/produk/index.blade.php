@@ -8,13 +8,13 @@
                                     <li>
                                         <a href="{{category_url($side_menu)}}">{{$side_menu->nama}}<!-- <span class="arrow-right"></span> --></a>
                                         @if($side_menu->anak->count() != 0)
-                                        <ul style="padding-left: 20px;">
+                                        <ul class="sidebars">
                                             @foreach($side_menu->anak as $submenu)
                                             @if($submenu->parent == $side_menu->id)
                                             <li>
-                                                <a href="{{category_url($submenu)}}" style="background-color:transparent">{{$submenu->nama}}</a>
+                                                <a href="{{category_url($submenu)}}" class="submenus">{{$submenu->nama}}</a>
                                                 @if($submenu->anak->count() != 0)
-                                                <ul style="padding-left: 20px;">
+                                                <ul class="sidebars">
                                                     @foreach($submenu->anak as $submenu2)
                                                     @if($submenu2->parent == $submenu->id)
                                                     <li>
@@ -41,16 +41,16 @@
                                     <li>
                                     	<a href="{{product_url($best)}}">
                                         	<div class="img-block">
-                                                {{HTML::image(product_image_url($best->gambar1),'produk',array('width'=>'81','height'=>'auto'))}}
+                                                {{HTML::image(product_image_url($best->gambar1,'thumb'),'produk',array('width'=>'81','height'=>'auto'))}}
                                             </div>
-                                            <p class="product-name">{{$best->nama}}</p>
+                                            <p class="product-name">{{short_description($best->nama,25)}}</p>
                                             <p class="price">{{price($best->hargaJual)}}</p>
                                         </a>
                                     </li>
                                     @endforeach
                                 </ul>
                                 <div class="btn-more">
-                                	<a href="{{url('produk')}}">view more</a>
+                                	<a href="{{url('produk')}}">produk lainnya</a>
                                 </div>
                             </div>
                             <div id="latest-news" class="block">
@@ -59,7 +59,7 @@
                                     @foreach(list_blog(2) as $blogs)
                                     <li>
                                         <h5 class="title-news">{{$blogs->judul}}</h5>
-                                        <p>{{short_description($blogs->isi, 150)}}<a class="read-more" href="{{blog_url($blogs)}}">Read More</a></p>
+                                        <p>{{short_description($blogs->isi, 150)}} <a class="read-more" href="{{blog_url($blogs)}}">Baca Selengkapnya</a></p>
                                         <span class="date-post">{{date("F d, Y", strtotime($blogs->created_at))}}</span>
                                     </li>
                                     @endforeach
@@ -69,13 +69,13 @@
                                 @foreach(vertical_banner() as $banner)    
                                 <div class="img-block">
                                     <a href="{{url($banner->url)}}">
-                                        {{HTML::image(banner_image_url($banner->gambar), 'banner', array('width'=>'272','height'=>'auto', "class"=>"img-responsive"))}}
+                                        {{HTML::image(banner_image_url($banner->gambar), 'Info Promo', array('width'=>'272','height'=>'auto', "class"=>"img-responsive"))}}
                                     </a>
                                 </div>
                                 @endforeach 
                             </div>
                             {{ Theme::partial('subscribe') }}
-                        </div><!--#left_sidebar-->
+                        </div>
                         <div id="center_column" class="col-lg-9 col-xs-12 col-sm-8">
                             <div class="product-list col-xs-12">
                                 <div class="top-list">
@@ -97,16 +97,14 @@
                                         <li class="col-xs-6 col-sm-4">
                                             @if(is_outstok($myproduk))
                                             <div class="empty badge-black"><span>KOSONG</span></div>
-                                            @else
-                                                @if(is_terlaris($myproduk))
-                                                <div class="hot badge-red"><span>HOT</span></div>
-                                                @elseif(is_produkbaru($myproduk))
-                                                <div class="hot badge-green"><span>BARU</span></div>
-                                                @endif
+                                            @elseif(is_terlaris($myproduk))
+                                            <div class="hot badge-red"><span>HOT</span></div>
+                                            @elseif(is_produkbaru($myproduk))
+                                            <div class="hot badge-green"><span>BARU</span></div>
                                             @endif
                                             <div class="image-container">
                                                 <a href="{{product_url($myproduk)}}">
-                                                {{HTML::image(product_image_url($myproduk->gambar1),'produk',array('class'=>'img-responsive','style'=>'height:263px; margin: 0px auto;'))}}
+                                                {{HTML::image(product_image_url($myproduk->gambar1,'medium'),$myproduk->nama,array('class'=>'img-responsive gridimg','title'=>$myproduk->nama))}}
                                                 </a>
                                             </div>
                                             <h5 class="product-name">{{short_description($myproduk->nama,11)}}</h5>
@@ -119,9 +117,9 @@
                                     <ul class="list">
                                         @foreach(list_product(null, @$category, @$collection) as $myproduk)
                                         <li class="col-xs-12">
-                                            <div class="image-container col-xs-12 col-md-3" style="padding: 0;">
+                                            <div class="image-container col-xs-12 col-md-3" id="listcontainer">
                                                 <a href="{{product_url($myproduk)}}">
-                                                {{HTML::image(product_image_url($myproduk->gambar1),'produk',array('class'=>'img-responsive','style'=>'height:150px;max-width: 150px;'))}}
+                                                {{HTML::image(product_image_url($myproduk->gambar1,'medium'),$myproduk->nama,array('class'=>'img-responsive','title'=>$myproduk->nama))}}
                                                 </a>
                                             </div>
                                             <h5 class="product-name">{{short_description($myproduk->nama,73)}}</h5>
@@ -134,21 +132,20 @@
                                     </ul>
                                     @endif
                                 @else
-                                    <article style="font-style:italic; text-align:center;">
-                                        <i>Produk tidak ditemukan</i>
-                                    </article>
+                                    <article class="noresult"><i>Produk tidak ditemukan</i></article>
                                 @endif
                                 </div>
                                 
                                 {{list_product(null, @$category, @$collection)->links()}}
                             </div>
-                        </div> <!--.center_column-->
-                    </div><!--.inner-column-->	
+                        </div>
+                    </div>
                     <div>
                         @foreach(horizontal_banner() as $banner)    
                         <a href="{{url($banner->url)}}">
-                            {{HTML::image(banner_image_url($banner->gambar), 'banner', array('width'=>'1168', 'height'=>'200', "class"=>"img-responsive"))}}
+                            {{HTML::image(banner_image_url($banner->gambar), 'Info Promo', array('width'=>'1168', 'height'=>'200', "class"=>"img-responsive"))}}
                         </a>
+                        <br>
                         @endforeach 
                     </div>
                 </div>
