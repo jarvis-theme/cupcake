@@ -9,7 +9,7 @@ require.config({
 			deps : ['jquery']
 		},
 		'cart' : {
-			deps : ['jquery','noty'],
+			deps : ['jquery'],
 		},
 		'jq_ui' : {
 			deps : ['jquery'],
@@ -59,11 +59,9 @@ require([
 	'jquery',
 	'router',
 	'cart',
-	'noty_util',
 	'main'
-], function($,router,cart,noty,main){
+], function($,router,cart,main){
 	router.run();
 	main.run();
-	noty.run();
 	cart.run();
 });
