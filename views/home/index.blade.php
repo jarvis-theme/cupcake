@@ -9,7 +9,7 @@
                                 <div class="row">
                                     <ul class="grid">
                                     {{-- */ $i=0 /* --}}
-                                    @foreach(home_product(null) as $produk)
+                                    @foreach(home_product() as $produk)
                                         <li class="col-xs-6 col-sm-3">
                                             @if(is_outstok($produk))
                                             <div class="badge-black empty"><span>KOSONG</span></div>
@@ -28,8 +28,11 @@
                                             <a class="view" href="{{product_url($produk)}}">Lihat</a>
                                         </li>
                                         {{-- */ $i++ /* --}}
+                                        @if($i%2 == 0)
+                                        <div class="visible-xs clearfix"></div>
+                                        @endif
                                         @if($i%4 == 0)
-                                        <div class="clearfix hidden-xs-block"></div>
+                                        <div class="hidden-xs clearfix"></div>
                                         @endif
                                     @endforeach
                                     </ul>

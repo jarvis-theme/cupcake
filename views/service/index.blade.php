@@ -31,15 +31,19 @@
                                 </div>
                             	<div class="row">
                                     <article class="col-lg-12 col-md-12 col-xs-12">
-                                    	<h3>Term of Service</h3>
+                                        <h3>Kebijakan Layanan</h3>
                                     	<p>{{$service->tos}}</p>
                                     </article>
+                                    <div class="clearfix"></div>
+                                    <hr>
                                     <article class="col-lg-12 col-md-12 col-xs-12">
-                                    	<h3>Refund Policy</h3>
+                                    	<h3>Kebijakan Pengembalian</h3>
                                     	<p>{{$service->refund}}</p>
                                     </article>
+                                    <div class="clearfix"></div>
+                                    <hr>
                                     <article class="col-lg-12 col-md-12 col-xs-12">
-                                    	<h3>Privacy Policy</h3>
+                                    	<h3>Kebijakan Privasi</h3>
                                     	<p>{{$service->privacy}}</p>
                                     </article>
                                 </div>

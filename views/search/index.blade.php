@@ -41,7 +41,7 @@
                                     <li>
                                     	<a href="{{product_url($best)}}">
                                         	<div class="img-block">
-                                                {{HTML::image(product_image_url($best->gambar1,'thumb'),'produk',array('width'=>'81','height'=>'auto'))}}
+                                                {{HTML::image(product_image_url($best->gambar1,'thumb'), $best->nama,array('width'=>'81','height'=>'auto'))}}
                                             </div>
                                             <p class="product-name">{{short_description($best->nama,25)}}</p>
                                             <p class="price">{{price($best->hargaJual)}}</p>
@@ -76,6 +76,7 @@
                                     @if(count($hasilpro) > 0)
                                     <div class="row">
                                         <ul class="grid">
+                                            {{-- */ $i=0 /* --}}
                                             @foreach($hasilpro as $produks)
                                             <li class="col-xs-6 col-sm-4">
                                                 <div class="image-container">
@@ -91,8 +92,16 @@
                                                 <span class="price">{{price($produks->hargaJual)}}</span>
                                                 <a class="view" href="{{product_url($produks)}}">Lihat</a>
                                             </li>
+                                            {{-- */ $i++ /* --}}
+                                            @if($i%2 == 0)
+                                            <div class="visible-xs clearfix"></div>
+                                            @endif
+                                            @if($i%3 == 0)
+                                            <div class="hidden-xs clearfix"></div>
+                                            @endif
                                             @endforeach
                                         </ul>
+                                        {{$hasilpro->links()}}
                                     </div>
                                     @endif
                                     @if(count($hasilhal) > 0 || count($hasilblog) > 0)
@@ -126,7 +135,6 @@
                                         @endforeach 
                                     </div>
                                     @endif
-                            	{{--$produks->links()--}}
                                 @else
                                 <article class="text-center"><i>Hasil pencarian tidak ditemukan</i></article>
                                 @endif

@@ -41,7 +41,7 @@
                                     <li>
                                     	<a href="{{product_url($best)}}">
                                         	<div class="img-block">
-                                                {{HTML::image(product_image_url($best->gambar1,'thumb'),'produk',array('width'=>'81','height'=>'auto'))}}
+                                                {{HTML::image(product_image_url($best->gambar1,'thumb'),$best->nama,array('width'=>'81','height'=>'auto'))}}
                                             </div>
                                             <p class="product-name">{{short_description($best->nama, 25)}}</p>
                                             <p class="price">{{price($best->hargaJual)}}</p> 
@@ -50,7 +50,7 @@
                                     @endforeach
                                 </ul>
                                 <div class="btn-more">
-                                	<a href="{{url('produk')}}">produk lainnya</a>
+                                	<a href="{{url('produk')}}">Lihat Semua</a>
                                 </div>
                             </div>
                             <div id="advertising" class="block">
@@ -110,10 +110,10 @@
                                         <div id="prod-right" class="col-lg-6 col-xs-12 col-sm-6">
                                         	<h2 class="name-title">{{$produk->nama}}</h2>
                                             <span class="price">
-                                            @if($produk->hargaCoret != 0)
-                                            <s>{{price($produk->hargaCoret)}}</s>&nbsp;&nbsp;
-                                            @endif
-                                            {{price($produk->hargaJual)}}
+                                                @if($produk->hargaCoret != 0)
+                                                <s>{{price($produk->hargaCoret)}}</s>&nbsp;&nbsp;
+                                                @endif
+                                                {{price($produk->hargaJual)}}
                                             </span>
                                             <div class="img-rating">
                                                 {{sosialShare(url(product_url($produk)))}}
@@ -173,13 +173,13 @@
                                     </div>
                                 </div>
                             </form>
-                            @if(count($produklain) > 0)
+                            @if(count(other_product($produk,4)) > 0)
                             <hr>
                             <div id="related-product" class="product-list">
                                 <h2 class="title">Produk Lainnya</h2>
                                 <div class="row">
                                     <ul class="grid">
-                                        @foreach($produklain  as $related)
+                                        @foreach(other_product($produk,4)  as $related)
                                         <li class="col-xs-6 col-sm-3">
                                             @if(is_outstok($related))
                                             <div class="badge-black empty"><span>KOSONG</span></div>
@@ -190,7 +190,7 @@
                                             @endif
                                             <div class="image-container">
                                                 <a href="{{product_url($related)}}">
-                                                {{HTML::image(product_image_url($related->gambar1,'medium'), $related->nama,array('class'=>'img-responsive imgrelated','title'=>$related->nama))}}
+                                                    {{HTML::image(product_image_url($related->gambar1,'medium'), $related->nama,array('class'=>'img-responsive imgrelated','title'=>$related->nama))}}
                                                 </a>
                                             </div>
                                             <h5 class="product-name">{{short_description($related->nama, 18)}}</h5>

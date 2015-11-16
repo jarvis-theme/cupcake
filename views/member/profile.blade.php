@@ -20,19 +20,19 @@
 				<div class="form-group">
 					<label for="inputName" class="col-md-2 control-label">Name</label>
 					<div class="col-md-4">
-						<input type="text" class="form-control" id="inputName" name="nama" value='{{$user->nama}}' placeholder="Name" required>
+						<input type="text" class="form-control" id="inputName" name="nama" value="{{$user->nama}}" placeholder="Nama" required>
 					</div>
 				</div>            
 				<div class="form-group">
 					<label for="inputEmail1" class="col-md-2 control-label">Email</label>
 					<div class="col-md-4">
-						<input type="email" class="form-control" name='email' value='{{$user->email}}' id="inputEmail1" placeholder="Email" required>
+						<input type="email" class="form-control" name="email" value="{{$user->email}}" id="inputEmail1" placeholder="Email" required>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="inputPhone" class="col-md-2 control-label">Telepon</label>
 					<div class="col-md-4">
-						<input type="text" class="form-control" id="inputPhone" name='telp' value='{{$user->telp}}' placeholder="Phone" required>
+						<input type="text" class="form-control" id="inputPhone" name="telp" value="{{$user->telp}}" placeholder="Phone" required>
 					</div>
 				</div>
 				<div class="form-group">
@@ -56,13 +56,13 @@
 				<div class="form-group">
 					<label for="inputAddress" class="col-md-2 control-label">Alamat</label>
 					<div class="col-md-4">
-					   <textarea class="form-control" rows="3" placeholder="Address" name='alamat' required>{{$user->alamat}}</textarea>
+					   <textarea class="form-control" rows="3" placeholder="Address" name="alamat" required>{{$user->alamat}}</textarea>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="inputZip" class="col-md-2 control-label">Kode Pos</label>
 					<div class="col-md-4">
-						<input type="text" class="form-control" id="inputZip" placeholder="Kode Pos" name='kodepos' value='{{$user->kodepos}}' required>
+						<input type="text" class="form-control" id="inputZip" placeholder="Kode Pos" name="kodepos" value="{{$user->kodepos}}" required>
 					</div>
 				</div>
 				<hr>

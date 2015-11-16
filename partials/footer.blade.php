@@ -34,19 +34,19 @@
                                     <p><strong>Telepon :</strong> {{@$kontak->telepon ? $kontak->telepon.'&nbsp;&nbsp;' : '-&nbsp;&nbsp;'}}  <strong>HP :</strong> {{@$kontak->hp ? $kontak->hp : '-&nbsp;&nbsp;'}}</p>
                                     <ul class="social">
                                         @if($kontak->fb)
-                                    	<li><a href="{{url($kontak->fb)}}"><i class="fa fa-facebook"></i></a></li>
+                                    	<li><a href="{{url($kontak->fb)}}" title="Facebook"><i class="fa fa-facebook"></i></a></li>
                                         @endif
                                         @if($kontak->tw)
-                                        <li><a href="{{url($kontak->tw)}}"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="{{url($kontak->tw)}}" title="Twitter"><i class="fa fa-twitter"></i></a></li>
                                         @endif
                                         @if($kontak->gp)
-                                        <li><a href="{{url($kontak->gp)}}"><i class="fa fa-google-plus"></i></a></li>
+                                        <li><a href="{{url($kontak->gp)}}" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
                                         @endif
                                         @if($kontak->pt)
-                                        <li><a href="{{url($kontak->pt)}}"><i class="fa fa-pinterest"></i></a></li>
+                                        <li><a href="{{url($kontak->pt)}}" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
                                         @endif
                                         @if($kontak->ig)
-                                        <li><a href="{{url($kontak->ig)}}"><i class="fa fa-instagram"></i></a></li>
+                                        <li><a href="{{url($kontak->ig)}}" title="Instagram"><i class="fa fa-instagram"></i></a></li>
                                         @endif
                                     </ul>
                                 </div>
@@ -58,18 +58,18 @@
                 	<div class="container">
                         <div class="col-sm-6 col-xs-12 pull-right">
                             @foreach(list_banks() as $banks)    
-                            {{HTML::image(bank_logo($banks),'bank')}}
+                            {{HTML::image(bank_logo($banks), $banks->bankdefault->nama, array('title'=>'Payment'))}}
                             @endforeach 
                             @foreach(list_payments() as $pay)
                                 @if($pay->nama == 'ipaymu' && $pay->aktif == 1)
-                                <img src="{{url('img/bank/ipaymu.jpg')}}" alt="ipaymu" />
+                                <img src="{{url('img/bank/ipaymu.jpg')}}" alt="ipaymu" title="Payment" />
                                 @endif
                                 @if($pay->nama == 'bitcoin' && $pay->aktif == 1)
                                 <img src="{{url('img/bitcoin.png')}}" alt="bitcoin" title="Payment" />
                                 @endif
                             @endforeach
                             @if(count(list_dokus()) > 0 && list_dokus()->status == 1)
-                            <img src="{{url('img/bank/doku.jpg')}}" alt="doku myshortcart" />
+                            <img src="{{url('img/bank/doku.jpg')}}" alt="doku myshortcart" title="Payment" />
                             @endif
                         </div>
                         <div class="col-sm-6 col-xs-12 pull-left">
@@ -78,3 +78,4 @@
                     </div>
                 </div>
             </footer>
+            {{pluginPowerup()}}            

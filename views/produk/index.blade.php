@@ -41,7 +41,7 @@
                                     <li>
                                     	<a href="{{product_url($best)}}">
                                         	<div class="img-block">
-                                                {{HTML::image(product_image_url($best->gambar1,'thumb'),'produk',array('width'=>'81','height'=>'auto'))}}
+                                                {{HTML::image(product_image_url($best->gambar1,'thumb'),$best->nama,array('width'=>'81','height'=>'auto'))}}
                                             </div>
                                             <p class="product-name">{{short_description($best->nama,25)}}</p>
                                             <p class="price">{{price($best->hargaJual)}}</p>
@@ -50,7 +50,7 @@
                                     @endforeach
                                 </ul>
                                 <div class="btn-more">
-                                	<a href="{{url('produk')}}">produk lainnya</a>
+                                	<a href="{{url('produk')}}">Lihat Semua</a>
                                 </div>
                             </div>
                             <div id="latest-news" class="block">
@@ -93,6 +93,7 @@
                                 @if(count(list_product(null, @$category, @$collection)) > 0)
                                     @if($view == '' || $view == 'grid')
                                     <ul class="grid">
+                                        {{-- */ $i=0 /* --}}
                                         @foreach(list_product(null, @$category, @$collection) as $myproduk)
                                         <li class="col-xs-6 col-sm-4">
                                             @if(is_outstok($myproduk))
@@ -104,13 +105,20 @@
                                             @endif
                                             <div class="image-container">
                                                 <a href="{{product_url($myproduk)}}">
-                                                {{HTML::image(product_image_url($myproduk->gambar1,'medium'),$myproduk->nama,array('class'=>'img-responsive gridimg','title'=>$myproduk->nama))}}
+                                                {{HTML::image(product_image_url($myproduk->gambar1,'medium'), $myproduk->nama, array('class'=>'img-responsive gridimg','title'=>$myproduk->nama))}}
                                                 </a>
                                             </div>
                                             <h5 class="product-name">{{short_description($myproduk->nama,11)}}</h5>
                                             <span class="price">{{price($myproduk->hargaJual)}}</span>
                                             <a class="view" href="{{product_url($myproduk)}}">Lihat</a><br>
                                         </li>
+                                        {{-- */ $i++ /* --}}
+                                        @if($i%2 == 0)
+                                        <div class="visible-xs clearfix"></div>
+                                        @endif
+                                        @if($i%3 == 0)
+                                        <div class="hidden-xs clearfix"></div>
+                                        @endif
                                         @endforeach
                                     </ul>
                                     @elseif($view == 'list')
@@ -119,7 +127,7 @@
                                         <li class="col-xs-12">
                                             <div class="image-container col-xs-12 col-md-3" id="listcontainer">
                                                 <a href="{{product_url($myproduk)}}">
-                                                {{HTML::image(product_image_url($myproduk->gambar1,'medium'),$myproduk->nama,array('class'=>'img-responsive','title'=>$myproduk->nama))}}
+                                                    {{HTML::image(product_image_url($myproduk->gambar1,'medium'), $myproduk->nama, array('class'=>'img-responsive','title'=>$myproduk->nama))}}
                                                 </a>
                                             </div>
                                             <h5 class="product-name">{{short_description($myproduk->nama,73)}}</h5>

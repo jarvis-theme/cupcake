@@ -23,10 +23,10 @@
                             <ul>
                             @if ($checkouttype==1)
                                 @foreach ($order->detailorder as $detail)
-                                <li class="detailorder">{{$detail->produk->nama}} {{$detail->opsiSkuId !=0 ? '('.$detail->opsisku->opsi1.($detail->opsisku->opsi2 != '' ? ' / '.$detail->opsisku->opsi2:'').($detail->opsisku->opsi3 !='' ? ' / '.$detail->opsisku->opsi3:'').')':''}} - {{$detail->qty}}</li>
+                                <li class="detailorder">{{$detail->produk->nama}} {{$detail->opsiSkuId !=0 ? '('.$detail->opsisku['opsi1'].($detail->opsisku['opsi2'] != '' ? ' / '.$detail->opsisku['opsi2']:'').($detail->opsisku['opsi3'] !='' ? ' / '.$detail->opsisku['opsi3']:'').')':''}} - {{$detail->qty}}</li>
                                 @endforeach
                             @else
-                                <li class="detailorder">{{$order->preorderdata->produk->nama}} ({{$order->opsiSkuId==0 ? 'No Opsi' : $order->opsisku->opsi1.($order->opsisku->opsi2!='' ? ' / '.$order->opsisku->opsi2:'').($order->opsisku->opsi3!='' ? ' / '.$order->opsisku->opsi3:'')}})
+                                <li class="detailorder">{{$order->preorderdata->produk->nama}} ({{$order->opsiSkuId==0 ? 'No Opsi' : $order->opsisku['opsi1'].($order->opsisku['opsi2']!='' ? ' / '.$order->opsisku['opsi2']:'').($order->opsisku['opsi3']!='' ? ' / '.$order->opsisku['opsi3']:'')}})
                                  - {{$order->jumlah}}</li>
                             @endif
                             </ul>
@@ -72,13 +72,13 @@
                             @elseif($order->status==3)
                             <span class="label label-info">Menunggu pelunasan</span>
                             @elseif($order->status==4)
-                                <span class="label label-success">Pembayaran lunas</span>
+                            <span class="label label-success">Pembayaran lunas</span>
                             @elseif($order->status==5)
-                                <span class="label label-info">Terkirim</span>
+                            <span class="label label-info">Terkirim</span>
                             @elseif($order->status==6)
-                                <span class="label label-default">Batal</span>
+                            <span class="label label-default">Batal</span>
                             @elseif($order->status==7)
-                                <span class="label label-info">Konfirmasi Pelunasan diterima</span>
+                            <span class="label label-info">Konfirmasi Pelunasan diterima</span>
                             @endif
                         @endif  
                         </td>

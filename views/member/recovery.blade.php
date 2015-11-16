@@ -6,13 +6,13 @@
 				<div class="form-group">
 					<label class="col-lg-3 control-label">Password Baru</label>
 					<div class="col-lg-8">
-						<input class="form-control" type="password" name="password" placeholder="password baru" required>
+						<input class="form-control" type="password" name="password" placeholder="Password baru" required>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-lg-3 control-label">Konfirmasi Password Baru</label>
 					<div class="col-lg-8">
-						<input class="form-control" type="password" name="password_confirmation" placeholder="konfirmasi password baru" required>
+						<input class="form-control" type="password" name="password_confirmation" placeholder="Konfirmasi password baru" required>
 					</div>
 				</div>
 	   

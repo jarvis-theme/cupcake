@@ -35,13 +35,13 @@
                                 </ul>
                             </div>
                             <div id="best-seller" class="block">
-                            	<div class="title"><h2>Best Sellling</h2></div>
+                            	<div class="title"><h2>Produk Terlaris</h2></div>
                             	<ul class="block-content">
                                     @foreach(best_seller() as $best)
                                     <li>
                                     	<a href="{{product_url($best)}}">
                                         	<div class="img-block">
-                                                {{HTML::image(product_image_url($best->gambar1,'thumb'),$best->nama,array('width'=>'81','height'=>'auto','title'=>$best->nama))}}
+                                                {{HTML::image(product_image_url($best->gambar1,'thumb'), $best->nama,array('width'=>'81','height'=>'auto','title'=>$best->nama))}}
                                             </div>
                                             <p class="product-name">{{short_description($best->nama,25)}}</p>
                                             <p class="price">{{price($best->hargaJual)}}</p>
@@ -50,7 +50,7 @@
                                     @endforeach
                                 </ul>
                                 <div class="btn-more">
-                                	<a href="{{URL::to('produk')}}">produk lainnya</a>
+                                	<a href="{{URL::to('produk')}}">Lihat Semua</a>
                                 </div>
                             </div>
                             <div id="advertising" class="block">
@@ -65,7 +65,7 @@
                             {{ Theme::partial('subscribe') }}
                         </div>
                         <div id="center_column" class="col-lg-9 col-xs-12 col-sm-8">
-                            <div class="contact-us">
+                            <div>
                                 <h2 class="title">Testimonial</h2>
                                 <div class="contact-desc">
                                     @foreach(list_testimonial() as $key=>$value)
@@ -82,8 +82,8 @@
                                 <div class="col-lg-12 col-xs-12">
                                     {{list_testimonial()->links()}}
                                 </div>
-                                <form class="col-lg-12 col-xs-12 contact-form" action="{{url('testimoni')}}" method="post">
-                                    <h3>Kirim Testimonial</h3>
+                                <form class="col-lg-12 col-xs-12 contact-us" action="{{url('testimoni')}}" method="post">
+                                    <h2>Kirim Testimonial</h2>
                                     <p class="form-group">
                                         <input class="form-control" placeholder="Nama" type="text" name="nama" required>
                                     </p>

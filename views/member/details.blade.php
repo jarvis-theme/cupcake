@@ -32,7 +32,7 @@
 							</tr>
 						</thead>
 						<tbody>
-						@foreach (list_order() as $item)
+							@foreach (list_order() as $item)
 							<tr>
 								<td>{{$pengaturan->checkoutType==3 ? prefixOrder().$item->kodePreorder : prefixOrder().$item->kodeOrder}}</td>
 								<td>{{$pengaturan->checkoutType==3 ? waktu($item->tanggalPreorder) : waktu($item->tanggalOrder)}}</td>
@@ -97,13 +97,13 @@
 								@endif
 								</td>
 							</tr>
-						@endforeach
+							@endforeach
 						</tbody>
 					</table>
-					</div>
-                    {{list_order()->links()}} 
+				</div>
+                {{list_order()->links()}} 
 				@else
-					<span> Belum ada data order</span>
+				<span>Belum ada data order</span>
 				@endif
 			@else 
 				@if($inquiry->count()!=0)
@@ -140,15 +140,12 @@
 							@endforeach
 						</tbody>
 				@else
-						<tr>
-							<td colspan="2">Inquiry anda masih kosong.</td>
-						</tr>
+						<tr><td colspan="2">Inquiry anda masih kosong.</td></tr>
 				@endif
 					</table>
 				</div>
 			@endif 
 				
-			   </div>
 			</div>
         </div>
     </div>

@@ -4,7 +4,9 @@
                     @foreach (slideshow() as $val)        
                         <div class="da-slide">
                             <div class="da-img" id="slide-img">
-                                {{HTML::image(slide_image_url($val->gambar), 'slide')}}
+                                <a href="{{$val->text=='' ? '':$val->text}}">
+                                    {{HTML::image(slide_image_url($val->gambar), 'Slide')}}
+                                </a>
                             </div>
                         </div>
                     @endforeach 
@@ -18,7 +20,7 @@
                         <div class="item">
                             <div class="image-container">
                                 <a href="{{product_url($produk)}}">
-                                    {{HTML::image(product_image_url($produk->gambar1,'thumb'), 'produk', array('width'=>'auto', 'height'=>'114'))}}
+                                    {{HTML::image(product_image_url($produk->gambar1,'thumb'), $produk->nama, array('width'=>'auto', 'height'=>'114'))}}
                                 </a>
                             </div>
                             <h5 class="product-name">{{short_description($produk->nama, 15)}}</h5>

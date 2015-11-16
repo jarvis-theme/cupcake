@@ -2,8 +2,8 @@ var dirTema = document.querySelector("meta[name='theme_path']").getAttribute('co
 
 require.config({
 	baseUrl: '/',
-    urlArgs: "v=006",
-	waitSeconds: 120,
+    urlArgs: "v=007",
+	waitSeconds: 40,
 	shim: {
 		'bootstrap' : {
 			deps : ['jquery']
@@ -16,9 +16,6 @@ require.config({
 		},
 		"noty" : {
 			deps : ['jquery'],
-		},
-		"noty_util" : {
-			deps : ['jquery','noty'],
 		},
 		"navgoco" : {
 			deps : ['jquery'],
@@ -41,7 +38,6 @@ require.config({
 		cart			: 'js/shop_cart',
 		jq_ui			: 'js/jquery-ui',
 		noty			: 'js/jquery.noty',
-		noty_util		: 'js/utils/noty',
 		cslider			: dirTema+'/assets/js/lib/jquery.cslider',
 		fancybox		: dirTema+'/assets/js/lib/jquery.fancybox.pack',
 		flexslider		: dirTema+'/assets/js/lib/jquery.flexslider',

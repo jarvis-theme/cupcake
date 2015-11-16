@@ -26,7 +26,7 @@
 				<div class="form-group">
 					<label for="inputEmail1" class="col-lg-2">Email</label>
 					<div class="col-lg-10">
-						<input type="email" class="form-control" id="inputEmail1" name='email' value='{{Input::old("email")}}' required>
+						<input type="email" class="form-control" id="inputEmail1" name="email" value="{{Input::old('email')}}" required>
 					</div>
 				</div>
 				<div class="form-group">
@@ -62,19 +62,19 @@
 				<div class="form-group">
 					<label for="inputComment" class="col-lg-2">Alamat</label>
 					<div class="col-lg-10">
-						<textarea id="inputComment" class="form-control" rows="3" name='alamat' required>{{Input::old("alamat")}}</textarea>
+						<textarea id="inputComment" class="form-control" rows="3" name="alamat" required>{{Input::old("alamat")}}</textarea>
 					</div>
 				</div> 
 				<div class="form-group">
 					<label for="inputpos1" class="col-lg-2">Kode Pos</label>
 					<div class="col-lg-10">
-						<input type="text" class="form-control" id="inputpos1" name='kodepos' value='{{Input::old("kodepos")}}' >
+						<input type="text" class="form-control" id="inputpos1" name="kodepos" value="{{Input::old('kodepos')}}" >
 					</div>
 				</div>                      
 				<div class="form-group">
 					<label for="inputpho1" class="col-lg-2">Telepon</label>
 					<div class="col-lg-10">
-						<input type="text" class="form-control" id="inputpho1" name='telp' value='{{Input::old("telp")}}' required>
+						<input type="text" class="form-control" id="inputpho1" name="telp" value="{{Input::old('telp')}}" required>
 					</div>
 				</div>
 				<div class="form-group">
@@ -87,7 +87,7 @@
 				<div class="form-group">
 					<div class="col-lg-offset-2 col-lg-10 col-xs-offset-1">
 						<div class="checkbox">
-							<input name='readme' value="1" type="checkbox"> Saya telah membaca dan menyetujui <a href="{{url('service')}}" target="_blank" >Privacy Policy</a>
+							<input name="readme" value="1" type="checkbox"> Saya telah membaca dan menyetujui <a href="{{url('service')}}" target="_blank" >Privacy Policy</a>
 						</div>
 					</div>
 				</div>
