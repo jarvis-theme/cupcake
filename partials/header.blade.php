@@ -27,7 +27,7 @@
                                 @endforeach
                             </div>
                             <div id="logo" class="col-sm-6">
-                                @if(@getimagesize( url(logo_image_url()) ))
+                                @if(logo_image_url())
                                 <a href="{{ url('home') }}">
                                     {{HTML::image(logo_image_url(), 'Logo', array('class'=>'desktop-logo'))}}
                                 </a>
@@ -42,7 +42,7 @@
                         </div>
                         <div class="row mobile-only logo-mobile">
                         	<div id="logo" class="col-xs-12">
-                                @if(@getimagesize(url( logo_image_url() )))
+                                @if(logo_image_url())
                                 <a href="{{url('home')}}">
                                     {{HTML::image(logo_image_url(), 'Logo', array('class'=>'desktop-logo'))}}
                                 </a>
@@ -86,7 +86,7 @@
                         <div class="col-lg-3 col-md-3 pull-right search-form">
                             <form class="navbar-form" role="search" action="{{url('search')}}" method="post">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Cari" name="search" id="search" required>
+                                    <input type="text" class="form-control" placeholder="Cari Produk" name="search" id="search" required>
                                     <div class="input-group-btn">
                                         <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                                     </div>

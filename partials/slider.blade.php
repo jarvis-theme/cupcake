@@ -4,7 +4,11 @@
                     @foreach (slideshow() as $val)        
                         <div class="da-slide">
                             <div class="da-img" id="slide-img">
-                                <a href="{{$val->text=='' ? '':$val->text}}">
+                                @if($val->text=='')
+                                <a href="#">
+                                @else
+                                <a href="{{filter_link_url($val->text)}}" target="_blank">
+                                @endif
                                     {{HTML::image(slide_image_url($val->gambar), 'Slide')}}
                                 </a>
                             </div>

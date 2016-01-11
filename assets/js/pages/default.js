@@ -1,4 +1,4 @@
-define(['jquery','navgoco','owlcarousel','cslider','fancybox','bootstrap'], function($, navgoco, owlCarousel, cslider, fancybox)
+define(['jquery','navgoco','owlcarousel','cslider','fancybox','bootstrap','modernizr'], function($, navgoco, owlCarousel, cslider, fancybox)
 {
 	return new function(){
 		var self = this;

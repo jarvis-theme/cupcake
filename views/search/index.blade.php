@@ -67,7 +67,7 @@
                         <div id="center_column" class="col-lg-9 col-xs-12 col-sm-8">
                             <div class="product-list col-xs-12">
                                 <div class="top-list ">
-                                    <div class="col-xs-12 col-lg-6 col-sm-6">
+                                    <div class="col-xs-12">
                                         <h2 class="title">Hasil Pencarian</h2>
                                     </div>
                                     <div class="clr"></div>

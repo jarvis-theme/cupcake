@@ -69,7 +69,7 @@
                                 <h2 class="title">Testimonial</h2>
                                 <div class="contact-desc">
                                     @foreach(list_testimonial() as $key=>$value)
-                                    <article class="col-lg-12" style="margin-bottom:10px">
+                                    <article class="col-lg-12 bloglist">
                                         <h4><strong>{{$value->nama}}</strong></h4>
                                         <p>
                                             <small><i class="fa fa-calendar"></i> {{date("d M Y", strtotime($value->updated_at))}}</small>

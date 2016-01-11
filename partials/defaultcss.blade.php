@@ -8,7 +8,6 @@
 	{{generate_theme_css('cupcake/assets/css/owl.carousel.css')}}	
 	{{generate_theme_css('cupcake/assets/css/owl.theme.css')}}	
 	{{generate_theme_css('cupcake/assets/css/jquery.fancybox.css')}}	
-    {{generate_theme_js('cupcake/assets/js/lib/modernizr.custom.28468.js')}}	
 
     <!--Google Webfont -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>

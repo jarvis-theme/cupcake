@@ -41,7 +41,7 @@
 					<div class="pull-left col-sm-2">
 						<button type="submit" class="btn btn-green">Log in</button>
 					</div>
-					<div class="pull-right col-sm-4">
+					<div class="pull-right col-sm-7 newmember">
 						<small>Belum punya akun?</small>
 						<a href="{{url('member/create')}}" class="btn btn-red">Daftar Baru</a>
 					</div>

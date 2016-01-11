@@ -5,7 +5,7 @@
                             <div id="about-foot" class="col-xs-12 col-sm-4">
                             	<h4 class="title">Tentang Kami</h4>
                             	<div class="block-content">
-                                    <p>{{short_description($aboutUs[1]->isi,400)}}</p>
+                                    <p>{{short_description(about_us()->isi,400)}}</p>
                                 </div>
                             </div>
                             @foreach(other_menu() as $key=>$menu)
@@ -61,11 +61,14 @@
                             {{HTML::image(bank_logo($banks), $banks->bankdefault->nama, array('title'=>'Payment'))}}
                             @endforeach 
                             @foreach(list_payments() as $pay)
+                                @if($pay->nama == 'paypal' && $pay->aktif == 1)
+                                <img src="{{url('img/bank/paypal.png')}}" alt="Paypal" title="Payment" />
+                                @endif
                                 @if($pay->nama == 'ipaymu' && $pay->aktif == 1)
                                 <img src="{{url('img/bank/ipaymu.jpg')}}" alt="ipaymu" title="Payment" />
                                 @endif
                                 @if($pay->nama == 'bitcoin' && $pay->aktif == 1)
-                                <img src="{{url('img/bitcoin.png')}}" alt="bitcoin" title="Payment" />
+                                <img src="{{url('img/bitcoin.png')}}" alt="Bitcoin" title="Payment" />
                                 @endif
                             @endforeach
                             @if(count(list_dokus()) > 0 && list_dokus()->status == 1)
@@ -78,4 +81,4 @@
                     </div>
                 </div>
             </footer>
-            {{pluginPowerup()}}            
+            {{pluginPowerup()}} 

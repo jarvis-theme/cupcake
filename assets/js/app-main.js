@@ -3,7 +3,7 @@ var dirTema = document.querySelector("meta[name='theme_path']").getAttribute('co
 require.config({
 	baseUrl: '/',
     urlArgs: "v=007",
-	waitSeconds: 40,
+	waitSeconds: 60,
 	shim: {
 		'bootstrap' : {
 			deps : ['jquery']
@@ -43,6 +43,7 @@ require.config({
 		flexslider		: dirTema+'/assets/js/lib/jquery.flexslider',
 		navgoco			: dirTema+'/assets/js/lib/jquery.navgoco.min',
 		owlcarousel		: dirTema+'/assets/js/lib/owl.carousel.min',
+		modernizr		: dirTema+'/assets/js/lib/modernizr.custom.28468',
 		
 		// ROUTE
 		router          : 'js/router',
