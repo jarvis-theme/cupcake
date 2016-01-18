@@ -1,10 +1,11 @@
                 <div class="container">
                 	<div class="inner-column row">
                         <div id="left_sidebar" class="col-lg-3 col-xs-12 col-sm-4">
+                            @if(recentBlog(null,2)->count() > 0)
                             <div id="latest-news" class="block">
                             	<div class="title"><h2>Artikel Terbaru</h2></div>
                             	<ul class="block-content">
-                                    @foreach(list_blog(2) as $artikel)
+                                    @foreach(recentBlog(null,2) as $artikel)
                                     <li>
                                         <h5 class="title-news article-title">{{short_description($artikel->judul, 28)}}</h5>
                                         <p>{{short_description($artikel->isi, 150)}} <a class="read-more" href="{{blog_url($artikel)}}">Read More</a></p>
@@ -13,11 +14,12 @@
                                     @endforeach
                                 </ul>
                             </div>
+                            @endif
                             <div id="advertising" class="block">
                                 @foreach(vertical_banner() as $banners)
                             	<div class="img-block">
                             		<a href="{{url($banners->url)}}">
-                                        {{HTML::image(banner_image_url($banners->gambar),'Info Promo',array('width'=>'272','height'=>'auto','class'=>'img-responsive'))}}
+                                        {{HTML::image(banner_image_url($banners->gambar),'Info Promo',array('class'=>'img-responsive'))}}
                                     </a>
                                 </div>
                                 @endforeach

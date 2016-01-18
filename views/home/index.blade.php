@@ -40,11 +40,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="small-banner">
-                        @foreach(horizontal_banner() as $banner)	
+                    @foreach(horizontal_banner() as $banner)    
+                    <div class="adv-bottom">
                         <a href="{{url($banner->url)}}">
-                        	{{HTML::image(banner_image_url($banner->gambar), 'Info Promo', array('width'=>'1168', 'height'=>'200', "class"=>"img-responsive"))}}
+                        	{{HTML::image(banner_image_url($banner->gambar), 'Info Promo', array("class"=>"img-responsive"))}}
                     	</a>
-                	   @endforeach	
                     </div>
+            	   @endforeach	
                 </div>

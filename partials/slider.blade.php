@@ -17,6 +17,7 @@
                     </div>
                 </div>
             </section>
+            @if(best_seller()->count() > 0)
             <section id="p-carousel" class="hidden-xs">
                 <div class="container">
                     <div id="single-product" class="owl-carousel owl-theme">
@@ -24,7 +25,7 @@
                         <div class="item">
                             <div class="image-container">
                                 <a href="{{product_url($produk)}}">
-                                    {{HTML::image(product_image_url($produk->gambar1,'thumb'), $produk->nama, array('width'=>'auto', 'height'=>'114'))}}
+                                    {{HTML::image(product_image_url($produk->gambar1,'thumb'), $produk->nama, array('height'=>'114'))}}
                                 </a>
                             </div>
                             <h5 class="product-name">{{short_description($produk->nama, 15)}}</h5>
@@ -34,3 +35,4 @@
                     </div>
                 </div>
             </section>
+            @endif

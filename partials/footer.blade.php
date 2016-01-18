@@ -2,7 +2,7 @@
             	<div class="top-footer">
                 	<div class="container">
                     	<div class="row">
-                            <div id="about-foot" class="col-xs-12 col-sm-4">
+                            <div id="about-foot" class="col-xs-12 col-sm-3 col-md-4">
                             	<h4 class="title">Tentang Kami</h4>
                             	<div class="block-content">
                                     <p>{{short_description(about_us()->isi,400)}}</p>
@@ -10,7 +10,7 @@
                             </div>
                             @foreach(other_menu() as $key=>$menu)
                                 @if($key == '0' || $key == '1')
-                                <div id="links-foot" class="col-xs-12 col-sm-2">
+                                <div id="links-foot" class="col-xs-12 col-sm-3 col-md-2">
                                     <h4 class="title">{{$menu->nama}}</h4>
                                     <div class="block-content">
                                         <ul>
@@ -27,7 +27,7 @@
                                 @endif
                             @endforeach 
 
-                            <div id="contact-foot" class="col-xs-12 col-sm-4">
+                            <div id="contact-foot" class="col-xs-12 col-sm-3 col-md-4">
                             	<h4 class="title">Alamat Kami</h4>
                             	<div class="block-content">
                                     <p>{{@$kontak->alamat}}</p>
@@ -58,21 +58,21 @@
                 	<div class="container">
                         <div class="col-sm-6 col-xs-12 pull-right">
                             @foreach(list_banks() as $banks)    
-                            {{HTML::image(bank_logo($banks), $banks->bankdefault->nama, array('title'=>'Payment'))}}
+                            {{HTML::image(bank_logo($banks), $banks->bankdefault->nama, array('title'=>$banks->bankdefault->nama))}}
                             @endforeach 
                             @foreach(list_payments() as $pay)
                                 @if($pay->nama == 'paypal' && $pay->aktif == 1)
-                                <img src="{{url('img/bank/paypal.png')}}" alt="Paypal" title="Payment" />
+                                <img src="{{url('img/bank/paypal.png')}}" alt="Paypal" title="Paypal" />
                                 @endif
                                 @if($pay->nama == 'ipaymu' && $pay->aktif == 1)
-                                <img src="{{url('img/bank/ipaymu.jpg')}}" alt="ipaymu" title="Payment" />
+                                <img src="{{url('img/bank/ipaymu.jpg')}}" alt="ipaymu" title="Ipaymu" />
                                 @endif
                                 @if($pay->nama == 'bitcoin' && $pay->aktif == 1)
-                                <img src="{{url('img/bitcoin.png')}}" alt="Bitcoin" title="Payment" />
+                                <img src="{{url('img/bitcoin.png')}}" alt="Bitcoin" title="Bitoin" />
                                 @endif
                             @endforeach
                             @if(count(list_dokus()) > 0 && list_dokus()->status == 1)
-                            <img src="{{url('img/bank/doku.jpg')}}" alt="doku myshortcart" title="Payment" />
+                            <img src="{{url('img/bank/doku.jpg')}}" alt="doku myshortcart" title="Doku" />
                             @endif
                         </div>
                         <div class="col-sm-6 col-xs-12 pull-left">
