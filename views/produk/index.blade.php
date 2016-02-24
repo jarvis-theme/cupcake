@@ -34,6 +34,9 @@
                                 @endforeach
                                 </ul>
                             </div>
+                            <div class="powerup">
+                                {{pluginSidePowerup()}}
+                            </div>
                             @if(best_seller()->count() > 0)
                             <div id="best-seller" class="block">
                             	<div class="title"><h2>Produk Terlaris</h2></div>

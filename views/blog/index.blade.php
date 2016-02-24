@@ -48,7 +48,7 @@
                                     <article class="col-lg-12 bloglist">
 							            <h4><strong><a href="{{blog_url($blog)}}">{{$blog->judul}}</a></strong></h4>
 							            <p>
-							            	<small><i class="fa fa-calendar"></i> {{waktuTgl($blog->updated_at)}}</small>&nbsp;&nbsp;
+							            	<small><i class="fa fa-calendar"></i> {{waktuTgl($blog->created_at)}}</small>&nbsp;&nbsp;
                                             <span class="date-post"><i class="fa fa-tags"></i> <a href="{{blog_category_url(@$blog)}}">{{@$blog->kategori->nama}}</a></span>
 						            	</p>
 							            <p>

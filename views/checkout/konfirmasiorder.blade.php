@@ -85,16 +85,15 @@
                     </tr>
                 </tbody>
             </table>
+            <hr>
         </div>
         <div class="row">
-            <div class="col-md-5">
             @if($order->jenisPembayaran==1 && $order->status == 0)
-                @if($checkouttype==1)                         
-                {{-- */ $url = 'konfirmasiorder/' /* --}}
-                @else                         
-                {{-- */ $url = 'konfirmasipreorder/' /* --}}
-                @endif
-                {{Form::open(array('url'=> $url.$order->id, 'method'=>'put'))}}                           
+            <div class="col-md-5 col-md-offset-3">
+                <h3 class="align-center">Konfirmasi Pembayaran</h3>
+                {{-- */ $checkouttype==1 ? $url = 'konfirmasiorder/' : $url = 'konfirmasipreorder/' /* --}}
+
+                {{Form::open(array('url'=> $url.$order->id, 'method'=>'put'))}}
                     <div class="form-group">
                         <label  class="control-label"> Nama Pengirim:</label>
                         <input type="text" class="form-control" placeholder="Nama Pengirim" name="nama" required>
@@ -107,7 +106,7 @@
                         <label  class="control-label"> Rekening Tujuan:</label>
                         <select name="bank" class="form-control">
                             <option value="">-- Pilih Bank Tujuan --</option>
-                            @foreach ($banktrans as $bank)
+                            @foreach (list_banks() as $bank)
                             <option value="{{$bank->id}}">{{$bank->bankdefault->nama}} - {{$bank->noRekening}} - A/n {{$bank->atasNama}}</option>
                             @endforeach
                         </select>
@@ -124,10 +123,10 @@
                             @endif
                         @endif
                     </div>
-                    <button type="submit" class="btn btn-green">Konfirmasi Order</button>
+                    <button type="submit" class="btn btn-green">Konfirmasi</button>
                 {{Form::close()}}
-            @endif
             </div>
+            @endif
         </div>
 
         @if($paymentinfo!=null)
@@ -174,6 +173,9 @@
             <p>Silahkan melakukan pembayaran dengan bitcoin Anda secara online via bitcoin payment gateway. Transaksi ini berlaku jika pembayaran dilakukan sebelum <b>{{$expired_bitcoin}}</b>. Klik tombol "Pay with Bitcoin" di bawah untuk melanjutkan proses pembayaran.</p>
             {{$bitcoinbutton}}
             <br>
+            @else
+            <h3><center>Konfirmasi Pembayaran Via Bitcoin</center></h3><br>
+            <p><center><b>Batas waktu pembayaran bicoin anda telah habis.</b></center></p>
             @endif
         @endif
     </div>

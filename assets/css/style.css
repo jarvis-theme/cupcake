@@ -182,7 +182,7 @@ nav#menu .navbar-form button:hover {background:#f3906c; color:#fff}
 #left_sidebar .block li:last-child {margin:0 !important}
 #left_sidebar .block .img-block:first-child{margin-top: 0}
 #left_sidebar .block .img-block, .img-block {text-align:center; max-width:100%; width:auto; margin-top: 15px}
-#left_sidebar .block .img-block img, .img-block {margin:0 auto 15px; max-width: 272px}
+#left_sidebar .block .img-block img, .img-block {margin:0 auto 15px; max-width: 100%}
 #left_sidebar #categories ul {margin:0; list-style:none}
 #left_sidebar #categories ul li {border-bottom:1px solid #e9e9e9; position:relative}
 #left_sidebar #categories ul li:last-child {border:none}
@@ -444,7 +444,7 @@ h2.title {color:#ee9d90; font-size:30px; font-weight:300; margin-bottom:30px;}
 .contact-us i.mail {background-image: url("../images/ico-mail.png");}
 .contact-us .contact-form {margin-bottom:50px}
 .contact-us .contact-form textarea {height:170px}
-.contact-us .btn-send {
+.contact-us .btn-send, .btn-send, .powerup input[type="submit"] {
 	background:#b7d682;
 	color:#fff;
 	border-radius:5px;
@@ -452,7 +452,7 @@ h2.title {color:#ee9d90; font-size:30px; font-weight:300; margin-bottom:30px;}
 	font-weight:600;
 	border:none
 }
-.contact-us .btn-send:hover{background:#a4c36e}
+.contact-us .btn-send:hover, .btn-send:hover, .powerup input[type="submit"]:hover{background:#a4c36e}
 .contact-us .maps {width:100%; overflow:hidden}
 
 .btn-red{
@@ -749,9 +749,9 @@ footer .copyright p {margin:0; padding: 0}
 .titlehal{margin-bottom: 3px}.left{text-align: left}
 #tagsblog{margin-bottom: 15px}.copyright .container .pull-left{padding: 0}
 .white{color: #fff}
-/*.desktop-logo{width:auto !important;height:108px !important}*/
-#text-logo{margin:42px 0}
-.url-textlogo{color: #ff7d68}
+.desktop-logo{width:auto !important; height:108px !important}
+#text-logo{margin:42px 0}footer img{border-radius: 5px; margin-bottom: 5px}
+.url-textlogo{color: #ff7d68}.powerup input[type="submit"]{padding: 5px; margin-top: 5px;}
 .nodecoration{text-decoration:none}
 #toplink{padding-bottom: 5px}.search-form{padding: 0}
 @media screen and (min-width: 768px) and (max-width: 1024px) {

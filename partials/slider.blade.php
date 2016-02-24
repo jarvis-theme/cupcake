@@ -1,19 +1,19 @@
             <section id="p-slide">
             	<div class="container">
                     <div id="da-slider" class="da-slider slideshow">
-                    @foreach (slideshow() as $val)        
+                        @foreach (slideshow() as $val) 
                         <div class="da-slide">
-                            <div class="da-img" id="slide-img">
-                                @if($val->text=='')
-                                <a href="#">
-                                @else
-                                <a href="{{filter_link_url($val->text)}}" target="_blank">
-                                @endif
-                                    {{HTML::image(slide_image_url($val->gambar), 'Slide')}}
-                                </a>
-                            </div>
+                            @if(!empty($val->url))
+                            <a href="{{filter_link_url($val->url)}}" class="da-link" target="_blank">
+                            @else
+                            <a href="#" class="da-link">
+                            @endif
+                                <div class="da-img" id="slide-img">
+                                    {{HTML::image(slide_image_url($val->gambar), $val->title)}}
+                                </div>
+                            </a>
                         </div>
-                    @endforeach 
+                        @endforeach 
                     </div>
                 </div>
             </section>
