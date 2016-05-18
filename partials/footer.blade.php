@@ -48,6 +48,9 @@
                                         @if($kontak->ig)
                                         <li><a href="{{url($kontak->ig)}}" title="Instagram"><i class="fa fa-instagram"></i></a></li>
                                         @endif
+                                        @if($kontak->tl)
+                                        <li><a href="{{url($kontak->tl)}}" title="Tumblr"><i class="fa fa-tumblr"></i></a></li>
+                                        @endif
                                     </ul>
                                 </div>
                             </div>
@@ -73,6 +76,9 @@
                             @endforeach
                             @if(count(list_dokus()) > 0 && list_dokus()->status == 1)
                             <img src="{{url('img/bank/doku.jpg')}}" alt="doku myshortcart" title="Doku" />
+                            @endif
+                            @if(count(list_veritrans()) > 0 && list_veritrans()->status == 1 && list_veritrans()->type == 1)
+                            <img src="{{url('img/bank/veritrans.png')}}" alt="Veritrans" title="Veritrans">
                             @endif
                         </div>
                         <div class="col-sm-6 col-xs-12 pull-left">
