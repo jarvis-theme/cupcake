@@ -110,14 +110,14 @@
                         <label  class="control-label"> Rekening Tujuan:</label>
                         <select name="bank" class="form-control">
                             <option value="">-- Pilih Bank Tujuan --</option>
-                            @foreach (list_banks() as $bank)
+                            @foreach ($banktrans as $bank)
                             <option value="{{$bank->id}}">{{$bank->bankdefault->nama}} - {{$bank->noRekening}} - A/n {{$bank->atasNama}}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="form-group">
                         <label  class="control-label"> Jumlah:</label>
-                        @if($checkouttype==1)        
+                        @if($checkouttype==1) 
                         <input type="text" class="form-control" placeholder="Jumlah Transfer" name="jumlah" value="{{$order->status==0 ? $order->total : ''}}" required>
                         @else
                             @if($order->status < 2)

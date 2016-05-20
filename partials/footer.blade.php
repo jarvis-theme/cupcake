@@ -1,10 +1,10 @@
             <footer>
-            	<div class="top-footer">
-                	<div class="container">
-                    	<div class="row">
+                <div class="top-footer">
+                    <div class="container">
+                        <div class="row">
                             <div id="about-foot" class="col-xs-12 col-sm-3 col-md-4">
-                            	<h4 class="title">Tentang Kami</h4>
-                            	<div class="block-content">
+                                <h4 class="title">Tentang Kami</h4>
+                                <div class="block-content">
                                     <p>{{short_description(about_us()->isi,400)}}</p>
                                 </div>
                             </div>
@@ -28,13 +28,13 @@
                             @endforeach 
 
                             <div id="contact-foot" class="col-xs-12 col-sm-3 col-md-4">
-                            	<h4 class="title">Alamat Kami</h4>
-                            	<div class="block-content">
+                                <h4 class="title">Alamat Kami</h4>
+                                <div class="block-content">
                                     <p>{{@$kontak->alamat}}</p>
                                     <p><strong>Telepon :</strong> {{@$kontak->telepon ? $kontak->telepon.'&nbsp;&nbsp;' : '-&nbsp;&nbsp;'}}  <strong>HP :</strong> {{@$kontak->hp ? $kontak->hp : '-&nbsp;&nbsp;'}}</p>
                                     <ul class="social">
                                         @if($kontak->fb)
-                                    	<li><a href="{{url($kontak->fb)}}" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="{{url($kontak->fb)}}" title="Facebook"><i class="fa fa-facebook"></i></a></li>
                                         @endif
                                         @if($kontak->tw)
                                         <li><a href="{{url($kontak->tw)}}" title="Twitter"><i class="fa fa-twitter"></i></a></li>
@@ -58,10 +58,12 @@
                     </div>
                 </div>
                 <div class="copyright">
-                	<div class="container">
+                    <div class="container">
                         <div class="col-sm-6 col-xs-12 pull-right">
                             @foreach(list_banks() as $banks)    
-                            {{HTML::image(bank_logo($banks), $banks->bankdefault->nama, array('title'=>$banks->bankdefault->nama))}}
+                                @if($banks->status == 1)
+                                {{HTML::image(bank_logo($banks), $banks->bankdefault->nama, array('title'=>$banks->bankdefault->nama))}}
+                                @endif
                             @endforeach 
                             @foreach(list_payments() as $pay)
                                 @if($pay->nama == 'paypal' && $pay->aktif == 1)
@@ -82,7 +84,7 @@
                             @endif
                         </div>
                         <div class="col-sm-6 col-xs-12 pull-left">
-                    	   <p>&copy; {{ short_description(Theme::place('title'),80) }} {{date('Y')}} All Right Reserved. Powered by <a style="text-decoration: none;" target="_blank" href="http://jarvis-store.com">Jarvis Store</a></p>
+                           <p>&copy; {{ short_description(Theme::place('title'),80) }} {{date('Y')}} All Right Reserved. Powered by <a style="text-decoration: none;" target="_blank" href="http://jarvis-store.com">Jarvis Store</a></p>
                        </div>
                     </div>
                 </div>
