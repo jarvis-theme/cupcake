@@ -1,10 +1,6 @@
 <div class="container">
     <div class="inner-column row">
-        <div id="left_sidebar" class="col-xs-12 col-sm-4 col-lg-3 pull-right">
-            {{ Theme::partial('subscribe') }}
-            <br>
-        </div>
-        <div id="center_column" class="col-xs-12 col-sm-6 col-lg-4">
+        <div class="col-xs-12 col-sm-6 col-lg-4 pb20">
             <h2>Lupa Password</h2><hr><br>
             <form action="{{url('member/forgetpassword')}}" method="post">
                 <div class="input-group">
@@ -16,7 +12,7 @@
             </form>
             <br><br>
         </div>
-        <div id="center_column" class="col-xs-12 col-sm-6 col-lg-4">
+        <div class="col-xs-12 col-sm-6 col-lg-4 pb20">
             <h2>Pelanggan Baru</h2><hr><br>
             <p>Nikmati kemudahan berbelanja dengan mendaftar sebagai member.</p>
             <div class="input-group">
@@ -24,6 +20,9 @@
                     <a href="{{url('member/create')}}" class="btn btn-red">Daftar</a>
                 </span>
             </div>
+        </div>
+        <div id="left_sidebar" class="col-xs-12 col-sm-12 col-lg-3 pull-right">
+            {{ Theme::partial('subscribe') }}
         </div>
     </div>
 </div>

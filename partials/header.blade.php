@@ -83,7 +83,7 @@
                             <li><a href='{{menu_url($link)}}'>{{$link->nama}}</a></li>
                             @endforeach
                         </ul>
-                        <div class="col-lg-3 col-md-3 pull-right search-form">
+                        <div class="col-lg-3 col-md-3 pull-right search-form align-right">
                             <form class="navbar-form" role="search" action="{{url('search')}}" method="post">
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Cari Produk" name="search" id="search" required>
