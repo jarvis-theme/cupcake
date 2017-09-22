@@ -34,22 +34,29 @@
                                     <p><strong>Telepon :</strong> {{@$kontak->telepon ? $kontak->telepon.'&nbsp;&nbsp;' : '-&nbsp;&nbsp;'}}  <strong>HP :</strong> {{@$kontak->hp ? $kontak->hp : '-&nbsp;&nbsp;'}}</p>
                                     <ul class="social">
                                         @if($kontak->fb)
-                                        <li><a href="{{url($kontak->fb)}}" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a target="_blank" href="{{url($kontak->fb)}}" title="Facebook"><i class="fa fa-facebook"></i></a></li>
                                         @endif
                                         @if($kontak->tw)
-                                        <li><a href="{{url($kontak->tw)}}" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a target="_blank" href="{{url($kontak->tw)}}" title="Twitter"><i class="fa fa-twitter"></i></a></li>
                                         @endif
                                         @if($kontak->gp)
-                                        <li><a href="{{url($kontak->gp)}}" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+                                        <li><a target="_blank" href="{{url($kontak->gp)}}" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
                                         @endif
                                         @if($kontak->pt)
-                                        <li><a href="{{url($kontak->pt)}}" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
+                                        <li><a target="_blank" href="{{url($kontak->pt)}}" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
                                         @endif
                                         @if($kontak->ig)
-                                        <li><a href="{{url($kontak->ig)}}" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+                                        <li><a target="_blank" href="{{url($kontak->ig)}}" title="Instagram"><i class="fa fa-instagram"></i></a></li>
                                         @endif
                                         @if($kontak->tl)
-                                        <li><a href="{{url($kontak->tl)}}" title="Tumblr"><i class="fa fa-tumblr"></i></a></li>
+                                        <li><a target="_blank" href="{{url($kontak->tl)}}" title="Tumblr"><i class="fa fa-tumblr"></i></a></li>
+                                        @endif
+                                        @if($kontak->picmix)
+                                        <li>
+                                            <a target="_blank" href="{{url($kontak->picmix)}}" title="Picmix">
+                                                <img class="picmix" src="//d3kamn3rg2loz7.cloudfront.net/blogs/event/icon-picmix.png">
+                                            </a>
+                                        </li>
                                         @endif
                                     </ul>
                                 </div>

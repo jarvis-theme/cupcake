@@ -791,6 +791,8 @@ form[name="order"] > input[name="SAVE"]:hover {
 .product-list ul.list li a.view { float: left; }
 .midtrans { background: #f4f4f4; padding: 9px; }
 #sidemenu { max-width: 270px; margin: 0 auto 30px; }
+.picmix { width: 50px; margin-top: -4px; margin-left: -3px; opacity: 0.6; }
+.picmix:hover { opacity: 1; }
 
 @media (max-width: 991px) {
 	#listcontainer { float: none; }

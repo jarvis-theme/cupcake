@@ -156,7 +156,7 @@
                                             <div class="attribute">
                                                 <fieldset class="attribute_fieldset">
                                                     <div class="attribute_list">
-                                                        @if($opsiproduk->count() > 0)                 
+                                                        @if($opsiproduk->count() > 0)
                                                         <div class="size-list">
                                                             <div class="form-group">
                                                                 <label class="col-sm-4 control-label">Opsi :</label>
