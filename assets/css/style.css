@@ -780,6 +780,7 @@ form[name="order"] > input[name="SAVE"]:hover {
 .pb10 { padding-bottom: 10px; }
 .pb20 { padding-bottom: 20px; }
 .pb30 { padding-bottom: 30px; }
+.mb0 { margin-bottom: 0; }
 .banner-reg { margin-top: 2em; }
 .none-bg,
 #left_sidebar .none-bg {
@@ -793,6 +794,8 @@ form[name="order"] > input[name="SAVE"]:hover {
 #sidemenu { max-width: 270px; margin: 0 auto 30px; }
 .picmix { width: 50px; margin-top: -4px; margin-left: -3px; opacity: 0.6; }
 .picmix:hover { opacity: 1; }
+.bloglist img { max-width: 100%; margin: 5px 0; }
+
 
 @media (max-width: 991px) {
 	#listcontainer { float: none; }

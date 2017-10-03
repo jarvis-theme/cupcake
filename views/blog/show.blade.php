@@ -38,7 +38,7 @@
                         </div>
                         <div id="center_column" class="col-lg-9 col-xs-12 col-sm-8">
                             <div class="product-list">
-                                <section class="content">
+                                <section class="content bloglist">
                                     <div class="entry">
                                         <h2 class="title">{{$detailblog->judul}}</h2>
                                         <ul class="article-title">

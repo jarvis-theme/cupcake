@@ -47,12 +47,13 @@
                                     @foreach(list_blog(null,@$blog_category) as $blog)
                                     <article class="col-lg-12 bloglist">
                                         <h4><strong><a href="{{blog_url($blog)}}">{{$blog->judul}}</a></strong></h4>
-                                        <p>
+                                        <p class="mb0">
                                             <small><i class="fa fa-calendar"></i> {{waktuTgl($blog->created_at)}}</small>&nbsp;&nbsp;
                                             @if(!empty($blog->kategori))
                                             <span class="date-post"><i class="fa fa-tags"></i> <a href="{{blog_category_url(@$blog)}}">{{@$blog->kategori->nama}}</a></span>
                                             @endif
                                         </p>
+                                        <img src="{{ imgString($blog->isi) }}" />
                                         <p>
                                             {{shortDescription($blog->isi,300)}}<br>
                                             <a href="{{blog_url($blog)}}" class="theme">Baca Selengkapnya →</a>
